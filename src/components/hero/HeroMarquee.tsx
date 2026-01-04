@@ -2,7 +2,7 @@
 "use client";
 
 import { usePrefersReducedMotion } from "@/components/hero/usePrefersReducedMotion";
-import TechPill from "@/components/ui/TechPill";
+import { TechPill } from "@/components/ui/TechPill";
 
 export default function HeroMarquee({ items }: { items: string[] }) {
   const reduced = usePrefersReducedMotion();
