@@ -1,301 +1,22 @@
+// src/app/projects/page.tsx
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
-import { projects } from "@/content/projects";
+import Link from "next/link";
 import { motion } from "framer-motion";
-
-function ProjectLogo({ slug, title }: { slug: string; title: string }) {
-  if (slug === "bublhub") {
-    return (
-      <div className="project-logo">
-        <Image
-          src="/images/Glowlogo.png"
-          alt={`${title} logo`}
-          width={32}
-          height={32}
-          className="h-8 w-8 object-contain"
-        />
-      </div>
-    );
-  }
-
-  if (slug === "tea-powered-projects") {
-    return (
-      <div className="project-logo">
-        <Image
-          src="/images/tea-powered-icon.webp"
-          alt={`${title} logo`}
-          width={32}
-          height={32}
-          className="h-8 w-8 object-contain"
-        />
-      </div>
-    );
-  }
-
-  return (
-    <div className="project-logo">
-      <span className="text-xs font-medium opacity-70">•</span>
-    </div>
-  );
-}
-
-function IconArrowRight() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M5 12h12"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-      />
-      <path
-        d="M13 6l6 6-6 6"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function IconSpark() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M12 2l1.2 5.2L18 9l-4.8 1.8L12 16l-1.2-5.2L6 9l4.8-1.8L12 2Z"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M5 14l.7 2.8L8.5 18l-2.8.7L5 21l-.7-2.3L1.5 18l2.8-1.2L5 14Z"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function IconLayers() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M12 3l9 5-9 5-9-5 9-5Z"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M3 12l9 5 9-5"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M3 16l9 5 9-5"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function IconShield() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M12 2l8 4v6c0 6-3.5 9.5-8 10-4.5-.5-8-4-8-10V6l8-4Z"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M9 12l2 2 4-5"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function IconRocket() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M14 4c3 0 6 3 6 6-1 5-6 10-11 11-3 0-6-3-6-6C4 10 9 5 14 4Z"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M13 7l4 4"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinecap="round"
-      />
-      <path
-        d="M7 17l-2 5 5-2"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M10 10h.01"
-        stroke="currentColor"
-        strokeWidth="3"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-function IconGlobe() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M12 22a10 10 0 1 0-10-10 10 10 0 0 0 10 10Z"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M2 12h20"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M12 2c2.6 2.7 4.1 6.3 4.1 10S14.6 19.3 12 22c-2.6-2.7-4.1-6.3-4.1-10S9.4 4.7 12 2Z"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function IconCaseStudy() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M14 2v6h6"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M9 13h6M9 17h6"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function tagTone(
-  label: string
-): "aqua" | "violet" | "pink" | "mint" | "amber" | "slate" {
-  const l = label.toLowerCase();
-  if (l.includes("react") && !l.includes("native")) return "aqua";
-  if (l.includes("expo") || l.includes("react native") || l.includes("mobile"))
-    return "violet";
-  if (l.includes("appwrite") || l.includes("node") || l.includes("server"))
-    return "pink";
-  if (l.includes("mysql") || l.includes("db") || l.includes("database"))
-    return "mint";
-  if (
-    l.includes("figma") ||
-    l.includes("phpstorm") ||
-    l.includes("gitlab") ||
-    l.includes("tool") ||
-    l.includes("ci")
-  )
-    return "amber";
-  return "slate";
-}
-
-function TagPill({
-  label,
-  variant = "soft",
-}: {
-  label: string;
-  variant?: "soft" | "glow" | "outline";
-}) {
-  const tone = tagTone(label);
-  const cls =
-    variant === "glow"
-      ? "tag-pill tag-pill-glow"
-      : variant === "outline"
-      ? "tag-pill tag-pill-outline"
-      : "tag-pill tag-pill-soft";
-  return (
-    <span className={cls} data-tone={tone}>
-      {label}
-    </span>
-  );
-}
+import { projects } from "@/content/projects";
+import { ProjectLogo } from "@/components/projects/ProjectLogo";
+import { Button } from "@/components/ui/Button";
+import { TechPill } from "@/components/ui/TechPill";
+import {
+  IconArrowRight,
+  IconCaseStudy,
+  IconGlobe,
+  IconRocket,
+  IconSpark,
+  IconLayers,
+  IconShield,
+} from "@/components/ui/icons";
 
 export default function ProjectsPage() {
   return (
@@ -341,47 +62,34 @@ export default function ProjectsPage() {
                 className="max-w-2xl text-sm leading-relaxed"
                 style={{ color: "var(--muted)" }}
               >
-                This is the best overview of what I ship: product builds
-                (BublHub) and client delivery (Tea Powered Projects). Each case
-                study highlights decisions, implementation, and outcomes.
+                A focused set of product + client work. Each case study breaks
+                down what I built, why I built it that way, and what changed as
+                the project evolved.
               </p>
             </div>
 
             <div className="flex flex-wrap gap-2">
-              <span className="tag-pill tag-pill-outline" data-tone="amber">
-                Next.js + TypeScript
-              </span>
-              <span className="tag-pill tag-pill-outline" data-tone="violet">
-                Expo (React Native)
-              </span>
-              <span className="tag-pill tag-pill-outline" data-tone="pink">
-                Appwrite + Functions
-              </span>
-              <span className="tag-pill tag-pill-outline" data-tone="mint">
-                Payments + Data
-              </span>
+              {[
+                "Next.js",
+                "TypeScript",
+                "React",
+                "React Native (Expo)",
+                "PHP",
+                "MySQL",
+                "Shopify",
+                "SEO",
+              ].map((t) => (
+                <TechPill key={t} label={t} />
+              ))}
             </div>
 
             <div className="flex flex-wrap gap-2 pt-1">
-              <Link href="/contact" className="btn btn-primary">
-                <span className="btn-icon" aria-hidden="true">
-                  <IconRocket />
-                </span>
-                <span className="btn-label">Contact</span>
-                <span className="btn-trail" aria-hidden="true">
-                  <IconArrowRight />
-                </span>
-              </Link>
-
-              <Link href="/about" className="btn btn-secondary">
-                <span className="btn-icon" aria-hidden="true">
-                  <IconSpark />
-                </span>
-                <span className="btn-label">About</span>
-                <span className="btn-trail" aria-hidden="true">
-                  <IconArrowRight />
-                </span>
-              </Link>
+              <Button href="/contact" variant="primary" icon={<IconRocket />}>
+                Contact
+              </Button>
+              <Button href="/about" variant="secondary" icon={<IconSpark />}>
+                About
+              </Button>
             </div>
           </div>
 
@@ -407,7 +115,7 @@ export default function ProjectsPage() {
               </div>
               <div className="flex flex-col gap-1">
                 <div className="text-sm font-semibold">
-                  Clean architecture & maintainability
+                  Maintainable structure
                 </div>
                 <div className="text-xs" style={{ color: "var(--muted)" }}>
                   Clear boundaries, reusable components, predictable patterns.
@@ -477,12 +185,8 @@ export default function ProjectsPage() {
                     </div>
 
                     <div className="mt-4 flex flex-wrap gap-2">
-                      {p.stack.slice(0, 6).map((s, idx) => (
-                        <TagPill
-                          key={s}
-                          label={s}
-                          variant={idx < 2 ? "glow" : "soft"}
-                        />
+                      {p.stack.slice(0, 8).map((s) => (
+                        <TechPill key={s} label={s} />
                       ))}
                     </div>
 
@@ -505,34 +209,23 @@ export default function ProjectsPage() {
 
                     <div className="mt-5 flex flex-wrap gap-2">
                       {isBublhub ? (
-                        <a
-                          className="btn btn-primary"
+                        <Button
                           href="https://bublhub.com"
-                          target="_blank"
-                          rel="noreferrer"
+                          external
+                          variant="primary"
+                          icon={<IconGlobe />}
                         >
-                          <span className="btn-icon" aria-hidden="true">
-                            <IconGlobe />
-                          </span>
-                          <span className="btn-label">Visit site</span>
-                          <span className="btn-trail" aria-hidden="true">
-                            <IconArrowRight />
-                          </span>
-                        </a>
+                          Visit site
+                        </Button>
                       ) : null}
 
-                      <Link
-                        className="btn btn-secondary"
+                      <Button
                         href={`/projects/${p.slug}`}
+                        variant="secondary"
+                        icon={<IconCaseStudy />}
                       >
-                        <span className="btn-icon" aria-hidden="true">
-                          <IconCaseStudy />
-                        </span>
-                        <span className="btn-label">Case study</span>
-                        <span className="btn-trail" aria-hidden="true">
-                          <IconArrowRight />
-                        </span>
-                      </Link>
+                        Case study
+                      </Button>
                     </div>
                   </div>
                 </div>

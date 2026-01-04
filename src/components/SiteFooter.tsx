@@ -1,46 +1,9 @@
+// src/components/SiteFooter.tsx
 "use client";
 
 import Image from "next/image";
 import Link from "next/link";
-
-function IconGithub() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M9 19c-4 1.5-4-2.5-6-3m12 6v-3.2c0-.9.3-1.6.8-2-2.6-.3-5.3-1.3-5.3-5.9 0-1.3.5-2.4 1.3-3.3-.1-.3-.6-1.6.1-3.3 0 0 1-.3 3.4 1.3 1-.3 2-.4 3-.4s2 .1 3 .4c2.4-1.6 3.4-1.3 3.4-1.3.7 1.7.2 3 .1 3.3.8.9 1.3 2 1.3 3.3 0 4.6-2.7 5.6-5.3 5.9.5.4.9 1.2.9 2.5V22"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function IconGitlab() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M12 21 3.5 14.8 6.1 4.7h3.5L12 11l2.4-6.3h3.5l2.6 10.1L12 21Z"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
+import { IconArrowRight } from "@/components/ui/icons";
 
 function IconLinkedIn() {
   return (
@@ -80,32 +43,6 @@ function IconLinkedIn() {
   );
 }
 
-function IconArrowRight() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M5 12h12"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-      />
-      <path
-        d="M13 6l6 6-6 6"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
 export default function SiteFooter() {
   return (
     <footer className="site-footer">
@@ -137,37 +74,7 @@ export default function SiteFooter() {
           <div className="flex flex-wrap gap-2">
             <a
               className="footer-link"
-              href="https://github.com/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <span className="footer-link-icon" aria-hidden="true">
-                <IconGithub />
-              </span>
-              GitHub
-              <span className="ml-0.5 opacity-70" aria-hidden="true">
-                <IconArrowRight />
-              </span>
-            </a>
-
-            <a
-              className="footer-link"
-              href="https://gitlab.com/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <span className="footer-link-icon" aria-hidden="true">
-                <IconGitlab />
-              </span>
-              GitLab
-              <span className="ml-0.5 opacity-70" aria-hidden="true">
-                <IconArrowRight />
-              </span>
-            </a>
-
-            <a
-              className="footer-link"
-              href="https://www.linkedin.com/"
+              href="https://www.linkedin.com/in/ashley-hylton-8b1271142/"
               target="_blank"
               rel="noreferrer"
             >
@@ -191,9 +98,6 @@ export default function SiteFooter() {
           </div>
           <div className="flex flex-wrap gap-2">
             <Link href="/projects" className="footer-link">
-              <span className="footer-link-icon" aria-hidden="true">
-                <IconArrowRight />
-              </span>
               Projects
               <span className="ml-0.5 opacity-70" aria-hidden="true">
                 <IconArrowRight />
@@ -201,9 +105,6 @@ export default function SiteFooter() {
             </Link>
 
             <Link href="/about" className="footer-link">
-              <span className="footer-link-icon" aria-hidden="true">
-                <IconArrowRight />
-              </span>
               About
               <span className="ml-0.5 opacity-70" aria-hidden="true">
                 <IconArrowRight />
@@ -211,9 +112,6 @@ export default function SiteFooter() {
             </Link>
 
             <Link href="/contact" className="footer-link">
-              <span className="footer-link-icon" aria-hidden="true">
-                <IconArrowRight />
-              </span>
               Contact
               <span className="ml-0.5 opacity-70" aria-hidden="true">
                 <IconArrowRight />

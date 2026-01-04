@@ -2,7 +2,16 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { Button } from "@/components/ui/Button";
+import {
+  IconSend,
+  IconArrowRight,
+  IconCheck,
+  IconAlert,
+  IconFolder,
+  IconUser,
+  IconInfo,
+} from "@/components/ui/icons";
 
 type FormState = "idle" | "sending" | "sent" | "error";
 
@@ -35,140 +44,6 @@ declare global {
   }
 }
 
-function IconSend() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M22 2L11 13"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M22 2l-7 20-4-9-9-4 20-7Z"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function IconArrowRight() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M5 12h12"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-      />
-      <path
-        d="M13 6l6 6-6 6"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function IconInfo() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M12 22a10 10 0 1 0-10-10 10 10 0 0 0 10 10Z"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M12 10v6"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-      />
-      <path
-        d="M12 7h.01"
-        stroke="currentColor"
-        strokeWidth="2.8"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-function IconCheck() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M20 6L9 17l-5-5"
-        stroke="currentColor"
-        strokeWidth="1.9"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function IconAlert() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M12 9v4"
-        stroke="currentColor"
-        strokeWidth="1.9"
-        strokeLinecap="round"
-      />
-      <path
-        d="M12 17h.01"
-        stroke="currentColor"
-        strokeWidth="2.8"
-        strokeLinecap="round"
-      />
-      <path
-        d="M10.3 3.6 2.4 18.1A2 2 0 0 0 4.1 21h15.8a2 2 0 0 0 1.7-2.9L13.7 3.6a2 2 0 0 0-3.4 0Z"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
 function useTurnstile(siteKey: string | undefined) {
   const [containerEl, setContainerEl] = useState<HTMLDivElement | null>(null);
   const [token, setToken] = useState<string>("");
@@ -180,15 +55,16 @@ function useTurnstile(siteKey: string | undefined) {
     const existing = document.querySelector(
       'script[data-turnstile="1"]'
     ) as HTMLScriptElement | null;
-    if (!existing) {
-      const s = document.createElement("script");
-      s.src =
-        "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
-      s.async = true;
-      s.defer = true;
-      s.dataset.turnstile = "1";
-      document.head.appendChild(s);
-    }
+
+    if (existing) return;
+
+    const s = document.createElement("script");
+    s.src =
+      "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+    s.async = true;
+    s.defer = true;
+    s.dataset.turnstile = "1";
+    document.head.appendChild(s);
   }, [siteKey]);
 
   useEffect(() => {
@@ -227,14 +103,23 @@ function useTurnstile(siteKey: string | undefined) {
   }, [siteKey, containerEl]);
 
   const reset = () => {
-    if (!widgetIdRef.current || !window.turnstile) return;
+    if (!widgetIdRef.current || !window.turnstile) {
+      setToken("");
+      return;
+    }
     try {
       window.turnstile.reset(widgetIdRef.current);
     } catch {}
     setToken("");
   };
 
-  return { setContainerEl, token, reset, enabled: Boolean(siteKey) };
+  return {
+    setContainerEl,
+    token,
+    hasToken: token.length > 0,
+    reset,
+    enabled: Boolean(siteKey),
+  };
 }
 
 function FieldShell({
@@ -286,9 +171,9 @@ export default function ContactPage() {
     if (name.trim().length < 2) return false;
     if (!email.includes("@")) return false;
     if (message.trim().length < 10) return false;
-    if (turnstile.enabled && !turnstile.token) return false;
+    if (turnstile.enabled && !turnstile.hasToken) return false;
     return true;
-  }, [busy, done, name, email, message, turnstile.enabled, turnstile.token]);
+  }, [busy, done, name, email, message, turnstile.enabled, turnstile.hasToken]);
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -312,7 +197,7 @@ export default function ContactPage() {
           botField: botField.trim(),
           website: website.trim(),
           elapsedMs,
-          turnstileToken: turnstile.token || undefined,
+          turnstileToken: turnstile.enabled ? turnstile.token : undefined,
         }),
       });
 
@@ -360,6 +245,7 @@ export default function ContactPage() {
                 fill
                 sizes="56px"
                 className="object-cover"
+                priority
               />
             </div>
             <div className="flex flex-col leading-tight">
@@ -389,25 +275,12 @@ export default function ContactPage() {
           </div>
 
           <div className="flex flex-wrap gap-2 pt-1">
-            <Link href="/projects" className="btn btn-secondary">
-              <span className="btn-icon" aria-hidden="true">
-                <IconInfo />
-              </span>
-              <span className="btn-label">View projects</span>
-              <span className="btn-trail" aria-hidden="true">
-                <IconArrowRight />
-              </span>
-            </Link>
-
-            <Link href="/about" className="btn btn-secondary">
-              <span className="btn-icon" aria-hidden="true">
-                <IconInfo />
-              </span>
-              <span className="btn-label">About</span>
-              <span className="btn-trail" aria-hidden="true">
-                <IconArrowRight />
-              </span>
-            </Link>
+            <Button href="/projects" variant="secondary" icon={<IconFolder />}>
+              View projects
+            </Button>
+            <Button href="/about" variant="secondary" icon={<IconUser />}>
+              About
+            </Button>
           </div>
         </div>
       </header>
@@ -443,15 +316,13 @@ export default function ContactPage() {
                   </span>
                 </button>
 
-                <Link href="/projects" className="btn btn-secondary">
-                  <span className="btn-icon" aria-hidden="true">
-                    <IconInfo />
-                  </span>
-                  <span className="btn-label">View projects</span>
-                  <span className="btn-trail" aria-hidden="true">
-                    <IconArrowRight />
-                  </span>
-                </Link>
+                <Button
+                  href="/projects"
+                  variant="secondary"
+                  icon={<IconInfo />}
+                >
+                  View projects
+                </Button>
               </div>
             </div>
           ) : (
@@ -532,7 +403,7 @@ export default function ContactPage() {
               {turnstile.enabled ? (
                 <div className="flex flex-col gap-2">
                   <div ref={turnstile.setContainerEl} />
-                  {!turnstile.token ? (
+                  {!turnstile.hasToken ? (
                     <div
                       className="text-xs"
                       style={{ color: "rgba(244,246,247,0.62)" }}
@@ -610,33 +481,21 @@ export default function ContactPage() {
                 Best for
               </div>
               <div className="mt-3 flex flex-col gap-2">
-                <div className="project-mini">
-                  <span className="project-mini-dot" aria-hidden="true" />
-                  <span
-                    className="text-xs"
-                    style={{ color: "rgba(244,246,247,0.78)" }}
-                  >
-                    Full-time roles (UK)
-                  </span>
-                </div>
-                <div className="project-mini">
-                  <span className="project-mini-dot" aria-hidden="true" />
-                  <span
-                    className="text-xs"
-                    style={{ color: "rgba(244,246,247,0.78)" }}
-                  >
-                    Contract / freelance
-                  </span>
-                </div>
-                <div className="project-mini">
-                  <span className="project-mini-dot" aria-hidden="true" />
-                  <span
-                    className="text-xs"
-                    style={{ color: "rgba(244,246,247,0.78)" }}
-                  >
-                    Product collaboration
-                  </span>
-                </div>
+                {[
+                  "Full-time roles (UK)",
+                  "Contract / freelance",
+                  "Product collaboration",
+                ].map((x) => (
+                  <div key={x} className="project-mini">
+                    <span className="project-mini-dot" aria-hidden="true" />
+                    <span
+                      className="text-xs"
+                      style={{ color: "rgba(244,246,247,0.78)" }}
+                    >
+                      {x}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
 

@@ -1,383 +1,33 @@
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { projects } from "@/content/projects";
+import { ProjectLogo } from "@/components/projects/ProjectLogo";
+import { Button } from "@/components/ui/Button";
+import { TechPill } from "@/components/ui/TechPill";
+import {
+  IconGlobe,
+  IconCaseStudy,
+  IconCalendar,
+  IconBriefcase,
+  IconCpu,
+  IconBrush,
+  IconServer,
+  IconRoadmap,
+  IconSend,
+} from "@/components/ui/icons";
 
-function ProjectLogo({ slug, title }: { slug: string; title: string }) {
-  if (slug === "bublhub") {
-    return (
-      <div className="project-logo project-logo-lg">
-        <Image
-          src="/images/Glowlogo.png"
-          alt={`${title} logo`}
-          width={44}
-          height={44}
-          className="h-10 w-10 object-contain"
-        />
-      </div>
-    );
-  }
+export const dynamicParams = false;
 
-  if (slug === "tea-powered-projects") {
-    return (
-      <div className="project-logo project-logo-lg">
-        <Image
-          src="/images/tea-powered-icon.webp"
-          alt={`${title} logo`}
-          width={44}
-          height={44}
-          className="h-10 w-10 object-contain"
-        />
-      </div>
-    );
-  }
-
-  return (
-    <div className="project-logo project-logo-lg">
-      <span className="text-sm font-medium opacity-70">•</span>
-    </div>
-  );
+export function generateStaticParams() {
+  return projects.map((p) => ({ slug: p.slug }));
 }
 
-function IconGlobe() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M12 22a10 10 0 1 0-10-10 10 10 0 0 0 10 10Z"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M2 12h20"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M12 2c2.6 2.7 4.1 6.3 4.1 10S14.6 19.3 12 22c-2.6-2.7-4.1-6.3-4.1-10S9.4 4.7 12 2Z"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function IconCaseStudy() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M14 2v6h6"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M9 13h6M9 17h6"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function IconArrowRight() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M5 12h12"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-      />
-      <path
-        d="M13 6l6 6-6 6"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function IconCalendar() {
-  return (
-    <svg
-      width="14"
-      height="14"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M7 3v3M17 3v3M4 8h16"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-      />
-      <path
-        d="M6 5h12a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function IconBriefcase() {
-  return (
-    <svg
-      width="14"
-      height="14"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M8 7V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-      />
-      <path
-        d="M4 8h16v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8Z"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M4 12h16"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-function IconCpu() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M9 9h6v6H9V9Z"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M4 10V8h2V6h2V4h2M20 10V8h-2V6h-2V4h-2M4 14v2h2v2h2v2h2M20 14v2h-2v2h-2v2h-2"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M7 7h10v10H7V7Z"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function IconBrush() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M7 21c2 0 3-1 3-3 0-2-1-3-3-3-2 0-3 1-3 3 0 2 1 3 3 3Z"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M10 18c3-6 8-12 10-14 1 2 0 5-2 7-2 2-5 3-8 7"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function IconServer() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M4 6h16v4H4V6Z"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M4 14h16v4H4v-4Z"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M7 8h.01M7 16h.01"
-        stroke="currentColor"
-        strokeWidth="2.4"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-function IconRoadmap() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M6 20V4c0-1 1-2 2-2h8c1 0 2 1 2 2v16"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M8 7h8M8 11h8M8 15h6"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-function IconSend() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M22 2L11 13"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M22 2l-7 20-4-9-9-4 20-7Z"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function tagTone(
-  label: string
-): "aqua" | "violet" | "pink" | "mint" | "amber" | "slate" {
-  const l = label.toLowerCase();
-  if (l.includes("react") && !l.includes("native")) return "aqua";
-  if (l.includes("expo") || l.includes("react native") || l.includes("mobile"))
-    return "violet";
-  if (l.includes("appwrite") || l.includes("node") || l.includes("server"))
-    return "pink";
-  if (l.includes("mysql") || l.includes("db") || l.includes("database"))
-    return "mint";
-  if (
-    l.includes("figma") ||
-    l.includes("phpstorm") ||
-    l.includes("gitlab") ||
-    l.includes("tool") ||
-    l.includes("ci")
-  )
-    return "amber";
-  return "slate";
-}
-
-function TagPill({
-  label,
-  variant = "soft",
-}: {
-  label: string;
-  variant?: "soft" | "glow" | "outline";
-}) {
-  const tone = tagTone(label);
-  const cls =
-    variant === "glow"
-      ? "tag-pill tag-pill-glow"
-      : variant === "outline"
-      ? "tag-pill tag-pill-outline"
-      : "tag-pill tag-pill-soft";
-  return (
-    <span className={cls} data-tone={tone}>
-      {label}
-    </span>
-  );
-}
-
-export default function ProjectDetail({
+export default async function ProjectDetail({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug } = params;
+  const { slug } = await params;
 
   const project = projects.find((p) => p.slug === slug);
   if (!project) notFound();
@@ -412,7 +62,7 @@ export default function ProjectDetail({
       <header className="project-detail-hero">
         <div className="flex flex-col gap-6">
           <div className="flex items-start gap-4">
-            <ProjectLogo slug={project.slug} title={project.title} />
+            <ProjectLogo slug={project.slug} title={project.title} size="lg" />
 
             <div className="flex flex-1 flex-col gap-2">
               <div className="flex flex-wrap items-center gap-2">
@@ -442,52 +92,34 @@ export default function ProjectDetail({
               </p>
 
               <div className="flex flex-wrap gap-2 pt-1">
-                {project.stack.map((s, idx) => (
-                  <TagPill
-                    key={s}
-                    label={s}
-                    variant={idx < 2 ? "glow" : "soft"}
-                  />
+                {project.stack.map((s) => (
+                  <TechPill key={s} label={s} />
                 ))}
               </div>
 
               <div className="mt-3 flex flex-wrap gap-2">
                 {isBublhub ? (
-                  <a
-                    className="btn btn-primary"
+                  <Button
                     href="https://bublhub.com"
-                    target="_blank"
-                    rel="noreferrer"
+                    external
+                    variant="primary"
+                    icon={<IconGlobe />}
                   >
-                    <span className="btn-icon" aria-hidden="true">
-                      <IconGlobe />
-                    </span>
-                    <span className="btn-label">Visit site</span>
-                    <span className="btn-trail" aria-hidden="true">
-                      <IconArrowRight />
-                    </span>
-                  </a>
+                    Visit site
+                  </Button>
                 ) : null}
 
-                <Link className="btn btn-secondary" href="/projects">
-                  <span className="btn-icon" aria-hidden="true">
-                    <IconCaseStudy />
-                  </span>
-                  <span className="btn-label">Back to projects</span>
-                  <span className="btn-trail" aria-hidden="true">
-                    <IconArrowRight />
-                  </span>
-                </Link>
+                <Button
+                  href="/projects"
+                  variant="secondary"
+                  icon={<IconCaseStudy />}
+                >
+                  Back to projects
+                </Button>
 
-                <Link className="btn btn-secondary" href="/contact">
-                  <span className="btn-icon" aria-hidden="true">
-                    <IconSend />
-                  </span>
-                  <span className="btn-label">Quick message</span>
-                  <span className="btn-trail" aria-hidden="true">
-                    <IconArrowRight />
-                  </span>
-                </Link>
+                <Button href="/contact" variant="secondary" icon={<IconSend />}>
+                  Quick message
+                </Button>
               </div>
             </div>
           </div>
@@ -610,12 +242,8 @@ export default function ProjectDetail({
 
                   {t.stack && t.stack.length > 0 ? (
                     <div className="mt-3 flex flex-wrap gap-2">
-                      {t.stack.map((s, sIdx) => (
-                        <TagPill
-                          key={s}
-                          label={s}
-                          variant={sIdx < 1 ? "outline" : "soft"}
-                        />
+                      {t.stack.map((s) => (
+                        <TechPill key={s} label={s} />
                       ))}
                     </div>
                   ) : null}
@@ -679,12 +307,8 @@ export default function ProjectDetail({
 
               {s.stack && s.stack.length > 0 ? (
                 <div className="mt-4 flex flex-wrap gap-2">
-                  {s.stack.map((x, idx) => (
-                    <TagPill
-                      key={x}
-                      label={x}
-                      variant={idx < 1 ? "outline" : "soft"}
-                    />
+                  {s.stack.map((x) => (
+                    <TechPill key={x} label={x} />
                   ))}
                 </div>
               ) : null}
@@ -718,13 +342,13 @@ export default function ProjectDetail({
             </div>
             <div className="flex flex-col gap-1">
               <div className="text-sm font-semibold tracking-tight">
-                Want to see how I work?
+                Want to chat through a build?
               </div>
               <div
                 className="text-xs"
                 style={{ color: "rgba(244,246,247,0.62)" }}
               >
-                Clean UI, reliable systems, and product-minded delivery.
+                Product-minded delivery, clean UI, and reliable systems.
               </div>
             </div>
           </div>
@@ -735,9 +359,8 @@ export default function ProjectDetail({
               style={{ color: "var(--muted)" }}
             >
               I build end-to-end: UI that feels intentional, backends that are
-              predictable, and workflows that map to real operations. I’m
-              currently shipping BublHub and delivering client work at Tea
-              Powered Projects.
+              predictable, and workflows that map to real operations. If you’ve
+              got a role or project in mind, I’m happy to talk.
             </p>
 
             <div className="mt-4 flex flex-wrap gap-2">
@@ -756,25 +379,16 @@ export default function ProjectDetail({
             </div>
 
             <div className="mt-4 flex flex-wrap gap-2">
-              <Link className="btn btn-primary" href="/contact">
-                <span className="btn-icon" aria-hidden="true">
-                  <IconSend />
-                </span>
-                <span className="btn-label">Quick message</span>
-                <span className="btn-trail" aria-hidden="true">
-                  <IconArrowRight />
-                </span>
-              </Link>
-
-              <Link className="btn btn-secondary" href="/projects">
-                <span className="btn-icon" aria-hidden="true">
-                  <IconCaseStudy />
-                </span>
-                <span className="btn-label">More case studies</span>
-                <span className="btn-trail" aria-hidden="true">
-                  <IconArrowRight />
-                </span>
-              </Link>
+              <Button href="/contact" variant="primary" icon={<IconSend />}>
+                Quick message
+              </Button>
+              <Button
+                href="/projects"
+                variant="secondary"
+                icon={<IconCaseStudy />}
+              >
+                More case studies
+              </Button>
             </div>
           </div>
         </div>
