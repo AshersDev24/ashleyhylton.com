@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/refs */
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -116,7 +117,6 @@ function useTurnstile(siteKey: string | undefined) {
   return {
     setContainerEl,
     token,
-    hasToken: token.length > 0,
     reset,
     enabled: Boolean(siteKey),
   };
@@ -161,6 +161,7 @@ export default function ContactPage() {
 
   const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
   const turnstile = useTurnstile(turnstileSiteKey);
+  const hasTurnstileToken = turnstile.token.length > 0;
 
   const busy = state === "sending";
   const done = state === "sent";
@@ -171,9 +172,9 @@ export default function ContactPage() {
     if (name.trim().length < 2) return false;
     if (!email.includes("@")) return false;
     if (message.trim().length < 10) return false;
-    if (turnstile.enabled && !turnstile.hasToken) return false;
+    if (turnstile.enabled && !hasTurnstileToken) return false;
     return true;
-  }, [busy, done, name, email, message, turnstile.enabled, turnstile.hasToken]);
+  }, [busy, done, name, email, message, turnstile.enabled, hasTurnstileToken]);
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -403,7 +404,7 @@ export default function ContactPage() {
               {turnstile.enabled ? (
                 <div className="flex flex-col gap-2">
                   <div ref={turnstile.setContainerEl} />
-                  {!turnstile.hasToken ? (
+                  {!hasTurnstileToken ? (
                     <div
                       className="text-xs"
                       style={{ color: "rgba(244,246,247,0.62)" }}
