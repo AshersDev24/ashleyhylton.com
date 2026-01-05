@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import sgMail from "@sendgrid/mail";
 
 type ContactPayload = {
   name?: string;
@@ -11,6 +10,9 @@ type ContactPayload = {
   turnstileToken?: string;
   elapsedMs?: number;
 };
+
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 const rate = new Map<string, { count: number; resetAt: number }>();
 
@@ -68,6 +70,7 @@ async function verifyTurnstile(token: string, ip: string) {
   const data = (await res.json().catch(() => null)) as {
     success?: boolean;
   } | null;
+
   if (!data?.success)
     return {
       ok: false as const,
@@ -174,6 +177,9 @@ export async function POST(req: Request) {
         { status: 500 }
       );
     }
+
+    const mod = (await import("@sendgrid/mail")) as any;
+    const sgMail = mod.default ?? mod;
 
     sgMail.setApiKey(apiKey);
 
