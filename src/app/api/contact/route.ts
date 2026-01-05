@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import type { MailService } from "@sendgrid/mail";
 
 type ContactPayload = {
   name?: string;
@@ -104,6 +105,13 @@ function extractSendgridMessage(err: unknown) {
   return typeof message === "string" ? message : null;
 }
 
+async function getSendGridClient() {
+  const mod = (await import("@sendgrid/mail")) as unknown as {
+    default: MailService;
+  };
+  return mod.default;
+}
+
 export async function POST(req: Request) {
   const ip = getIp(req);
   const limited = checkRateLimit(ip);
@@ -178,9 +186,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const mod = (await import("@sendgrid/mail")) as any;
-    const sgMail = mod.default ?? mod;
-
+    const sgMail = await getSendGridClient();
     sgMail.setApiKey(apiKey);
 
     const ua = safeHeader(req, "user-agent", 260);
