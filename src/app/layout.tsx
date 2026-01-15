@@ -31,12 +31,19 @@ export const metadata: Metadata = {
       "Developer portfolio: product work, client work, and case studies.",
     url: "https://ashleyhylton.com",
     siteName: "Ashley Hylton",
+    images: [
+      {
+        url: "/images/me.jpg",
+        alt: "Ashley Hylton",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Ashley Hylton | Software Developer",
     description:
       "Developer portfolio: product work, client work, and case studies.",
+    images: ["/images/me.jpg"],
   },
   alternates: {
     canonical: "https://ashleyhylton.com",
