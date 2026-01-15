@@ -31,3 +31,33 @@ The goal of this site is clarity over cleverness — clean structure, readable c
 ---
 
 ## Project Structure
+
+src/
+app/ App Router pages and layouts
+components/ Reusable UI and page-level components
+content/ Typed content sources (projects, copy)
+styles/ Global styles
+public/ Static assets
+
+
+---
+
+## Development
+
+```bash
+npm install
+npm run dev
+
+The site will be available at http://localhost:3000.
+
+Deployment
+
+The site is deployed independently and is not tied to any specific hosting provider.
+Build output is framework-standard and portable.
+
+License
+
+All rights reserved.
+
+This repository is provided for reference and portfolio review only.
+

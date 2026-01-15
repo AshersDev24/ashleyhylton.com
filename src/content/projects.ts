@@ -1,4 +1,3 @@
-// src/content/projects.ts
 export type ProjectTimelineItem = {
   title: string;
   period: string;
@@ -56,11 +55,18 @@ export const projects: Project[] = [
     ],
     highlights: [
       "Built the platform end-to-end across mobile, web, and backend workflows",
-      "Moved the backend away from Firebase to reduce lock-in and improve control",
-      "Improved code quality and maintainability with clearer service boundaries and structure",
-      "Published builds to app stores and tightened release readiness for launch",
+      "v1 launched in 2023 as a working ticketing baseline",
+      "v2 started in Sept 2024: redesign, rebrand, and database migration to support richer features",
+      "Migration designed for future portability beyond Appwrite",
     ],
-    links: [{ label: "Live site", href: "https://www.bublhub.com" }],
+    links: [
+      { label: "Live site", href: "https://www.bublhub.com" },
+      {
+        label: "Demo purchase flow",
+        href: "https://www.bublhub.com/eventListing/demo",
+      },
+      { label: "BublHub v2", href: "/projects/bublhub/v2" },
+    ],
     body: {
       overview:
         "BublHub is a platform for organisers to publish events, sell tickets, and build communities that drive repeat attendance. It combines ticketing with a retention layer that helps event brands grow over time.",
@@ -68,97 +74,106 @@ export const projects: Project[] = [
         "Organisers often stitch together multiple tools for promotion, ticketing, attendee management, and community engagement. That creates friction, inconsistent UX, and weak retention loops.",
       approach: [
         "Designed user journeys first, then built reusable UI patterns to keep web and mobile consistent",
-        "Built the product as a real system: clear navigation, predictable state, and a UI language that scales",
-        "Evolved backend responsibilities around data model clarity, permissions, and serverless workflows",
-        "Reduced vendor lock-in by redesigning the backend approach and improving long-term flexibility",
+        "Rebuilding the UI around a new brand direction so the product feels cohesive and scalable",
+        "Redesigning the data model and migrating from Firebase to Appwrite to reduce lock-in and support a more complex platform",
+        "Keeping portability in mind: vendor-specific code stays contained, product logic stays stable",
       ],
-      outcome: [
-        "Shipped the core platform foundations: authentication, profiles, event structure, and shared UI patterns",
-        "Improved maintainability with cleaner service boundaries and a more deliberate data model",
-        "Implemented payments foundations with Stripe and structured onboarding flows for organisers",
-        "Hardened the platform for launch with stronger structure, clearer flow, and higher code quality",
-      ],
+      outcome: [],
     },
     timeline: [
       {
         title: "Early builds and learning loop",
-        period: "2018 — 2020",
+        period: "2018 — 2022",
         summary:
-          "Started building BublHub by shipping real flows and learning what mattered most: the core journeys, the data model, and the interaction model.",
+          "Built and tested the core journeys early: event creation, browsing, and ticket purchase. The focus was learning what mattered and proving the flow end-to-end.",
         bullets: [
-          "Built initial mobile-first flows and tested real user journeys",
           "Iterated on event structure, profiles, and navigation patterns",
-          "Focused on end-to-end execution over theory",
+          "Validated the basic ticketing journey with real usage",
+          "Learned where the data model needed to evolve for the long-term vision",
         ],
         stack: ["React Native (early)", "Firebase (early)", "GCP (early)"],
       },
       {
-        title: "Product foundations and UI system direction",
-        period: "2021 — 2023",
+        title: "v1 launch",
+        period: "2023",
         summary:
-          "Moved from experiments to foundations: reusable UI patterns, clearer architecture, and stronger system thinking across web and mobile.",
+          "Launched v1 as a working baseline. The aim was a stable ticketing foundation that could be built on, with clear UX and reliable core flows.",
         bullets: [
-          "Defined reusable UI primitives and consistent interaction patterns",
-          "Improved separation of concerns to keep the codebase scalable",
-          "Refined information architecture around organiser and attendee flows",
+          "Shipped a usable ticketing baseline and core user journeys",
+          "Improved UX consistency and release readiness",
+          "Established the product direction beyond basic ticketing",
         ],
-        stack: ["Figma", "TypeScript", "React Native (Expo)"],
+        stack: ["Expo", "TypeScript", "Firebase (v1)"],
       },
       {
-        title: "Launch readiness and store publishing",
-        period: "2024",
+        title: "v2 starts: redesign + migration planning",
+        period: "Sept 2024 — Dec 2024",
         summary:
-          "Focused on shipping a stable baseline: release packaging, core flows, and improving consistency across screens.",
+          "Started v2 work to modernise the UI, rebrand the product, and plan the database redesign required to support a more capable platform.",
         bullets: [
-          "Strengthened onboarding and profile completion flows",
-          "Improved reliability and UX consistency across the product",
-          "Published builds to app stores and refined release readiness",
+          "New UI direction and rebrand work in Figma + Adobe",
+          "Planned the database redesign for richer features and relationships",
+          "Set the portability goal: reduce lock-in and keep migration options open",
         ],
-        stack: ["Expo", "TypeScript", "Next.js"],
+        stack: ["Figma", "Adobe", "TypeScript"],
       },
       {
-        title: "Backend redesign and migration to reduce lock-in",
-        period: "2025",
+        title: "v2 build: migration + feature layer",
+        period: "2025 — Current",
         summary:
-          "Rebuilt backend foundations to improve control, reduce vendor dependency, and raise code quality across the system.",
+          "Ongoing v2 build: migrating from Firebase to Appwrite, redesigning the data model, and building new capability on top of the improved foundations.",
         bullets: [
-          "Migrated away from Firebase to reduce lock-in and improve control",
-          "Redesigned collections, permissions, and workflow boundaries",
-          "Introduced serverless workflows and clearer service boundaries",
-          "Improved code quality and maintainability across the app",
+          "Database migration and redesign: Firebase → Appwrite",
+          "Expanded data model to support features beyond the original ticketing system",
+          "Added clearer workflow boundaries and service structure to keep the system maintainable",
+          "Portability mindset: vendor code stays contained, product logic stays stable",
+          "Payments work: Stripe onboarding and purchase flow hardening",
         ],
-        stack: ["Appwrite", "Serverless Functions", "TypeScript", "Node.js"],
-      },
-      {
-        title: "Payments and platform hardening",
-        period: "Current",
-        summary:
-          "Finishing the release baseline and building payout-ready workflows with Stripe, while continuing to harden the platform structure.",
-        bullets: [
-          "Stripe onboarding and account status handling",
-          "Platform fee + payout workflow planning",
-          "Ongoing UX polish and reliability improvements",
+        stack: [
+          "Appwrite",
+          "Stripe",
+          "TypeScript",
+          "Node.js",
+          "Next.js",
+          "Expo",
         ],
-        stack: ["Stripe", "Appwrite", "Next.js", "React Native (Expo)"],
       },
     ],
     sections: [
       {
-        title: "How I build products",
-        body: "I aim for clean UX, strong defaults, and systems that stay easy to work in as the product grows. I care about predictable state, reusable components, and backend workflows that map to real product operations.",
+        title: "v2 objective",
+        body: "v2 is a redesign + migration + build-out phase: modernise the UI, rebuild backend foundations, and add richer platform features on top of a more expressive data model — while keeping future portability realistic.",
         bullets: [
-          "UX decisions are treated as system decisions",
-          "Maintainable patterns over clever shortcuts",
-          "Clear boundaries between UI, domain logic, and backend workflows",
+          "New UI and rebrand in Figma and the Adobe suite",
+          "Database migration and redesign: Firebase → Appwrite",
+          "More complex data model to support new platform features",
+          "Designed for future migrations beyond Appwrite",
         ],
       },
       {
-        title: "What’s next",
-        body: "Once the baseline is solid, the next layer is community and organiser tooling: features that build retention and identity, not just one-off ticket sales.",
+        title: "Technical overview",
+        body: "The backend direction is to keep product logic stable and keep vendors contained: thin endpoints, services owning domain rules, and adapters wrapping vendor SDK calls.",
         bullets: [
-          "Community layer + organiser tools",
-          "Improved discovery and personalisation",
-          "Reliability, performance, and release cadence improvements",
+          "Thin endpoints: authenticate, validate, delegate",
+          "Service layer: business rules + orchestration",
+          "Vendor isolation: DB/storage/payments behind small interfaces",
+          "Workflow reliability: state-first flows and idempotency where it matters",
+        ],
+        stack: ["TypeScript", "Serverless Functions", "Appwrite", "Stripe"],
+      },
+      {
+        title: "Demo",
+        body: "A test-mode purchase flow that mirrors the intended production journey end-to-end.",
+      },
+      {
+        title: "Future roadmap",
+        body: "The next layer builds retention and organiser capability on top of solid ticketing foundations.",
+        bullets: [
+          "Organiser tooling: dashboards, comms, and event ops workflows",
+          "Community layer for retention and identity",
+          "Discovery + personalisation improvements",
+          "Operational hardening: monitoring and failure handling",
+          "Performance and release cadence improvements",
         ],
       },
     ],

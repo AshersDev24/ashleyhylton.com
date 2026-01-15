@@ -33,6 +33,7 @@ export default async function ProjectDetail({
   if (!project) notFound();
 
   const isBublhub = project.slug === "bublhub";
+  const bublhubDemoUrl = "https://www.bublhub.com/eventListing/demo";
 
   const whatThisShows = [
     {
@@ -99,14 +100,31 @@ export default async function ProjectDetail({
 
               <div className="mt-3 flex flex-wrap gap-2">
                 {isBublhub ? (
-                  <Button
-                    href="https://bublhub.com"
-                    external
-                    variant="primary"
-                    icon={<IconGlobe />}
-                  >
-                    Visit site
-                  </Button>
+                  <>
+                    <Button
+                      href="https://bublhub.com"
+                      external
+                      variant="primary"
+                      icon={<IconGlobe />}
+                    >
+                      Visit site
+                    </Button>
+                    <Button
+                      href={bublhubDemoUrl}
+                      external
+                      variant="secondary"
+                      icon={<IconCaseStudy />}
+                    >
+                      Demo purchase flow
+                    </Button>
+                    <Button
+                      href="/projects/bublhub/v2"
+                      variant="secondary"
+                      icon={<IconRoadmap />}
+                    >
+                      BublHub v2
+                    </Button>
+                  </>
                 ) : null}
 
                 <Button
@@ -282,15 +300,19 @@ export default async function ProjectDetail({
           ))}
         </ul>
 
-        <h2 className="mt-8 text-sm font-semibold">Outcome</h2>
-        <ul
-          className="mt-2 list-disc pl-5 text-sm"
-          style={{ color: "var(--muted)" }}
-        >
-          {project.body.outcome.map((o) => (
-            <li key={o}>{o}</li>
-          ))}
-        </ul>
+        {!isBublhub ? (
+          <>
+            <h2 className="mt-8 text-sm font-semibold">Outcome</h2>
+            <ul
+              className="mt-2 list-disc pl-5 text-sm"
+              style={{ color: "var(--muted)" }}
+            >
+              {project.body.outcome.map((o) => (
+                <li key={o}>{o}</li>
+              ))}
+            </ul>
+          </>
+        ) : null}
       </section>
 
       {project.sections && project.sections.length > 0 ? (
@@ -304,6 +326,19 @@ export default async function ProjectDetail({
               >
                 {s.body}
               </p>
+
+              {isBublhub && s.title === "Demo" ? (
+                <div className="mt-4">
+                  <Button
+                    href={bublhubDemoUrl}
+                    external
+                    variant="primary"
+                    icon={<IconCaseStudy />}
+                  >
+                    Open demo purchase flow
+                  </Button>
+                </div>
+              ) : null}
 
               {s.stack && s.stack.length > 0 ? (
                 <div className="mt-4 flex flex-wrap gap-2">
