@@ -1,0 +1,876 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ashley Hylton - Customer Service and Administration CV</title>
+    <style>
+      @page {
+        size: A4;
+        margin: 10mm;
+      }
+
+      :root {
+        --paper: #fbf8f3;
+        --panel: #ffffff;
+        --ink: #14212b;
+        --muted: rgba(20, 33, 43, 0.72);
+        --faint: rgba(20, 33, 43, 0.1);
+        --line: rgba(20, 33, 43, 0.12);
+        --accent: #184e57;
+        --accent-2: #c98a45;
+        --accent-soft: rgba(24, 78, 87, 0.08);
+        --shadow: 0 20px 60px rgba(20, 33, 43, 0.1);
+        --radius: 18px;
+      }
+
+      html,
+      body {
+        min-height: 100%;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background:
+          radial-gradient(
+            circle at top left,
+            rgba(201, 138, 69, 0.12),
+            transparent 32%
+          ),
+          radial-gradient(
+            circle at top right,
+            rgba(24, 78, 87, 0.1),
+            transparent 36%
+          ),
+          linear-gradient(180deg, #f6f1e8 0%, #fbf8f3 42%, #f8f4ee 100%);
+        font-family:
+          "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        width: min(100%, 860px);
+        margin: 24px auto;
+        padding: 11mm;
+        box-sizing: border-box;
+        background: rgba(255, 255, 255, 0.86);
+        border: 1px solid rgba(20, 33, 43, 0.08);
+        border-radius: 24px;
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(8px);
+      }
+
+      .hero {
+        position: relative;
+        padding: 22px 22px 18px;
+        border-radius: 22px;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.96),
+          rgba(248, 244, 238, 0.94)
+        );
+        border: 1px solid rgba(20, 33, 43, 0.08);
+        color: var(--ink);
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          115deg,
+          rgba(24, 78, 87, 0.03),
+          transparent 40%
+        );
+        pointer-events: none;
+      }
+
+      .hero-grid {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        gap: 16px;
+      }
+
+      .hero-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 14px;
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .name {
+        font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+        font-size: clamp(30px, 4vw, 40px);
+        line-height: 1;
+        letter-spacing: -0.03em;
+        font-weight: 700;
+      }
+
+      .title {
+        margin-top: 10px;
+        font-size: 14px;
+        line-height: 1.45;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(20, 33, 43, 0.72);
+        font-weight: 650;
+      }
+
+      .subline {
+        max-width: 62ch;
+        font-size: 13px;
+        line-height: 1.55;
+        color: rgba(20, 33, 43, 0.84);
+      }
+
+      .contact {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .contact-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 7px 11px;
+        border-radius: 999px;
+        background: rgba(24, 78, 87, 0.07);
+        border: 1px solid rgba(24, 78, 87, 0.14);
+        color: rgba(20, 33, 43, 0.84);
+        font-size: 12px;
+        line-height: 1.2;
+      }
+
+      .contact-chip a {
+        color: rgba(20, 33, 43, 0.84);
+      }
+
+      .contact-chip svg {
+        width: 14px;
+        height: 14px;
+        stroke: currentColor;
+        stroke-width: 1.9;
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        flex: 0 0 auto;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.75fr);
+        gap: 14px;
+        margin-top: 14px;
+      }
+
+      .stack {
+        display: grid;
+        gap: 14px;
+      }
+
+      .section {
+        display: grid;
+        gap: 9px;
+      }
+
+      .section-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 11px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        font-weight: 800;
+        color: rgba(20, 33, 43, 0.78);
+      }
+
+      .section-title::after {
+        content: "";
+        height: 1px;
+        flex: 1;
+        background: linear-gradient(90deg, rgba(20, 33, 43, 0.16), transparent);
+      }
+
+      .card {
+        padding: 14px 15px;
+        border-radius: var(--radius);
+        border: 1px solid var(--line);
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.92),
+          rgba(255, 255, 255, 0.76)
+        );
+      }
+
+      .card,
+      .role,
+      .skill,
+      .meta-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .summary {
+        font-size: 10.5px;
+        line-height: 1.6;
+        color: rgba(20, 33, 43, 0.9);
+      }
+
+      .timeline {
+        display: grid;
+        gap: 10px;
+      }
+
+      .role {
+        padding-top: 10px;
+      }
+
+      .role:first-child {
+        padding-top: 0;
+      }
+
+      .role + .role {
+        border-top: 1px solid rgba(20, 33, 43, 0.09);
+      }
+
+      .role-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: baseline;
+        flex-wrap: wrap;
+      }
+
+      .role-company {
+        font-size: 15px;
+        line-height: 1.2;
+        font-weight: 800;
+        letter-spacing: -0.01em;
+      }
+
+      .role-title {
+        margin-top: 3px;
+        font-size: 11.5px;
+        line-height: 1.45;
+        color: rgba(20, 33, 43, 0.8);
+        font-weight: 650;
+      }
+
+      .role-dates {
+        font-size: 11px;
+        line-height: 1.3;
+        color: rgba(20, 33, 43, 0.58);
+        white-space: nowrap;
+        font-weight: 700;
+      }
+
+      .bullets,
+      .mini-list {
+        margin: 0;
+        padding-left: 18px;
+        display: grid;
+        gap: 5px;
+        font-size: 10.6px;
+        line-height: 1.5;
+        color: rgba(20, 33, 43, 0.86);
+      }
+
+      .bullets {
+        margin-top: 8px;
+      }
+
+      .meta-grid {
+        display: grid;
+        gap: 12px;
+      }
+
+      .meta-card {
+        padding: 12px 13px;
+        border-radius: 16px;
+        border: 1px solid rgba(20, 33, 43, 0.1);
+        background: linear-gradient(
+          180deg,
+          rgba(24, 78, 87, 0.05),
+          rgba(201, 138, 69, 0.04)
+        );
+      }
+
+      .meta-heading {
+        font-size: 11px;
+        line-height: 1.3;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(20, 33, 43, 0.72);
+        font-weight: 800;
+        margin-bottom: 8px;
+      }
+
+      .skill {
+        padding: 10px 12px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.78);
+        border: 1px solid rgba(20, 33, 43, 0.08);
+      }
+
+      .skill + .skill {
+        margin-top: 8px;
+      }
+
+      .skill-name {
+        font-size: 12px;
+        line-height: 1.3;
+        font-weight: 800;
+        color: rgba(20, 33, 43, 0.9);
+      }
+
+      .skill-list {
+        margin: 5px 0 0;
+        padding-left: 16px;
+        display: grid;
+        gap: 4px;
+        font-size: 10.3px;
+        line-height: 1.45;
+        color: rgba(20, 33, 43, 0.82);
+      }
+
+      .note {
+        font-size: 10px;
+        line-height: 1.45;
+        color: rgba(20, 33, 43, 0.66);
+      }
+
+      .tag-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(24, 78, 87, 0.07);
+        border: 1px solid rgba(24, 78, 87, 0.14);
+        font-size: 10px;
+        line-height: 1.25;
+        font-weight: 700;
+        color: rgba(20, 33, 43, 0.84);
+      }
+
+      .tag a {
+        color: rgba(20, 33, 43, 0.84);
+      }
+
+      .compact-list {
+        margin: 0;
+        padding-left: 18px;
+        display: grid;
+        gap: 4px;
+        font-size: 10.4px;
+        line-height: 1.45;
+        color: rgba(20, 33, 43, 0.84);
+      }
+
+      .tag svg {
+        width: 12px;
+        height: 12px;
+        stroke: var(--accent);
+        stroke-width: 1.9;
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      @media (max-width: 860px) {
+        .page {
+          margin: 0;
+          border-radius: 0;
+          box-shadow: none;
+          border: none;
+        }
+
+        .layout {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media print {
+        body {
+          background: #ffffff;
+        }
+
+        .page {
+          width: auto;
+          margin: 0;
+          padding: 0;
+          border: 0;
+          border-radius: 0;
+          box-shadow: none;
+          background: transparent;
+          backdrop-filter: none;
+        }
+
+        .hero {
+          border-radius: 0;
+          padding: 18px 18px 14px;
+        }
+
+        .title {
+          margin-top: 8px;
+          font-size: 13px;
+        }
+
+        .subline {
+          font-size: 12px;
+          line-height: 1.45;
+        }
+
+        .layout {
+          display: block;
+          margin-top: 10mm;
+        }
+
+        .layout > * + * {
+          margin-top: 10mm;
+        }
+
+        .layout > aside.stack {
+          break-before: page;
+          page-break-before: always;
+        }
+
+        .stack {
+          display: block;
+        }
+
+        .stack > .section + .section {
+          margin-top: 10mm;
+        }
+
+        .card {
+          padding: 11px 12px;
+        }
+
+        .card {
+          break-inside: auto;
+          page-break-inside: auto;
+        }
+
+        .section {
+          gap: 6px;
+        }
+
+        .section-title {
+          break-after: avoid-page;
+          page-break-after: avoid;
+        }
+
+        .section-title + .card {
+          break-before: avoid-page;
+          page-break-before: avoid;
+        }
+
+        .role {
+          padding-top: 8px;
+        }
+
+        .bullets,
+        .mini-list,
+        .compact-list {
+          gap: 4px;
+          line-height: 1.4;
+        }
+
+        .tag {
+          font-size: 9.5px;
+          padding: 5px 9px;
+        }
+
+        a {
+          text-decoration: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header class="hero">
+        <div class="hero-grid">
+          <div class="hero-top">
+            <div>
+              <div class="name">Ashley Hylton</div>
+              <div class="title">Customer Service and Administration CV</div>
+            </div>
+            <div class="tag-row" aria-label="Highlights">
+              <span class="tag">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 21s7-4.5 7-10a7 7 0 1 0-14 0c0 5.5 7 10 7 10Z" />
+                  <path d="M12 11.5a2.2 2.2 0 1 0 0-4.4 2.2 2.2 0 0 0 0 4.4Z" />
+                </svg>
+                Nottingham, UK
+              </span>
+              <span class="tag">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4 6h16v12H4z" />
+                  <path d="m4 7 8 6 8-6" />
+                </svg>
+                <a href="mailto:ashleyhylton91@gmail.com"
+                  >ashleyhylton91@gmail.com</a
+                >
+              </span>
+              <span class="tag">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.15 10.8 19.8 19.8 0 0 1 .08 2.18 2 2 0 0 1 2.06 0h3a2 2 0 0 1 2 1.72c.12.86.3 1.7.54 2.5a2 2 0 0 1-.45 2.11L6 7a16 16 0 0 0 7 7l.67-1.15a2 2 0 0 1 2.11-.45c.8.24 1.64.42 2.5.54A2 2 0 0 1 22 16.92Z"
+                  />
+                </svg>
+                <a href="tel:+447580141392">+44 7580 141392</a>
+              </span>
+            </div>
+          </div>
+          <div class="subline">
+            Customer service and administration professional with a steady,
+            people-first approach and a strong record in fast-paced,
+            compliance-led roles.
+          </div>
+        </div>
+      </header>
+
+      <div class="layout">
+        <section class="stack">
+          <div class="section">
+            <div class="section-title">Professional Profile</div>
+            <div class="card">
+              <div class="summary">
+                Customer service and administration professional with more than
+                10 years' experience across contact centres, public sector
+                teams, telesales, and legal support. Confident handling
+                sensitive information, explaining processes clearly, and
+                maintaining accurate records.
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">Employment History</div>
+            <div class="card">
+              <div class="timeline">
+                <article class="role">
+                  <div class="role-head">
+                    <div>
+                      <div class="role-company">Tea Powered Projects</div>
+                      <div class="role-title">
+                        Full-Stack Software Developer
+                      </div>
+                    </div>
+                    <div class="role-dates">Sep 2024 - Apr 2026</div>
+                  </div>
+                  <ul class="bullets">
+                    <li>
+                      Delivered structured project work to agreed timelines and
+                      quality standards.
+                    </li>
+                    <li>
+                      Worked closely with stakeholders to clarify requirements
+                      and resolve issues.
+                    </li>
+                    <li>
+                      Maintained accurate documentation and communicated clearly
+                      with non-technical stakeholders.
+                    </li>
+                  </ul>
+                </article>
+
+                <article class="role">
+                  <div class="role-head">
+                    <div>
+                      <div class="role-company">HAP Communications</div>
+                      <div class="role-title">
+                        Customer Service Account Advisor
+                      </div>
+                    </div>
+                    <div class="role-dates">2023 - Sep 2024</div>
+                  </div>
+                  <ul class="bullets">
+                    <li>
+                      Managed high-volume inbound and outbound calls, supporting
+                      customers with account queries and service information.
+                    </li>
+                    <li>
+                      Built rapport quickly, understanding needs and providing
+                      clear, accurate guidance.
+                    </li>
+                    <li>
+                      Resolved concerns professionally, ensuring positive and
+                      compliant outcomes.
+                    </li>
+                    <li>
+                      Maintained accurate customer records and worked within
+                      structured processes and service standards.
+                    </li>
+                  </ul>
+                </article>
+
+                <article class="role">
+                  <div class="role-head">
+                    <div>
+                      <div class="role-company">Specsavers Opticians</div>
+                      <div class="role-title">Customer Service Assistant</div>
+                    </div>
+                    <div class="role-dates">Nov 2020 - 2023</div>
+                  </div>
+                  <ul class="bullets">
+                    <li>
+                      Handled customer enquiries relating to contact lens
+                      orders, deliveries, and account queries.
+                    </li>
+                    <li>
+                      Tracked orders and liaised with suppliers to resolve
+                      issues promptly.
+                    </li>
+                    <li>
+                      Provided clear product guidance while maintaining
+                      confidentiality of personal information.
+                    </li>
+                    <li>Ensured accurate updates across internal systems.</li>
+                  </ul>
+                </article>
+
+                <article class="role">
+                  <div class="role-head">
+                    <div>
+                      <div class="role-company">Blinds Go</div>
+                      <div class="role-title">Customer Service Advisor</div>
+                    </div>
+                    <div class="role-dates">Nov 2019 - Nov 2020</div>
+                  </div>
+                  <ul class="bullets">
+                    <li>
+                      Responded to enquiries regarding made-to-order products
+                      and delivery timeframes.
+                    </li>
+                    <li>
+                      Liaised with production teams and couriers to resolve
+                      delivery issues.
+                    </li>
+                    <li>
+                      Managed complaints and provided clear next steps while
+                      maintaining detailed records.
+                    </li>
+                  </ul>
+                </article>
+
+                <article class="role">
+                  <div class="role-head">
+                    <div>
+                      <div class="role-company">Browne Jacobson LLP</div>
+                      <div class="role-title">
+                        Administration Assistant (Legal)
+                      </div>
+                    </div>
+                    <div class="role-dates">Jun 2017 - Nov 2019</div>
+                  </div>
+                  <ul class="bullets">
+                    <li>
+                      Managed client and third-party telephone calls, providing
+                      professional and accurate support.
+                    </li>
+                    <li>
+                      Maintained confidential client and matter data within case
+                      management systems.
+                    </li>
+                    <li>
+                      Updated and filed documents in line with naming
+                      conventions and compliance standards.
+                    </li>
+                    <li>
+                      Supported court bundle preparation, ensuring accurate
+                      pagination and redaction.
+                    </li>
+                    <li>
+                      Tracked key dates and supported file closure and
+                      archiving.
+                    </li>
+                  </ul>
+                </article>
+
+                <article class="role">
+                  <div class="role-head">
+                    <div>
+                      <div class="role-company">Nottingham City Council</div>
+                      <div class="role-title">Customer Service Assistant</div>
+                    </div>
+                    <div class="role-dates">Jan 2015 - Jun 2017</div>
+                  </div>
+                  <ul class="bullets">
+                    <li>
+                      Answered varied telephone enquiries from members of the
+                      public and staff.
+                    </li>
+                    <li>
+                      Provided guidance on council services and supported
+                      digital access.
+                    </li>
+                  </ul>
+                </article>
+
+                <article class="role">
+                  <div class="role-head">
+                    <div>
+                      <div class="role-company">AmTrust International</div>
+                      <div class="role-title">Administrative Assistant</div>
+                    </div>
+                    <div class="role-dates">Sep 2014 - Jan 2015</div>
+                  </div>
+                  <ul class="bullets">
+                    <li>
+                      Managed departmental correspondence and documentation.
+                    </li>
+                    <li>
+                      Answered calls and supported fee earners with
+                      administrative tasks.
+                    </li>
+                  </ul>
+                </article>
+
+                <article class="role">
+                  <div class="role-head">
+                    <div>
+                      <div class="role-company">Experian PLC</div>
+                      <div class="role-title">
+                        Customer Service Advisor (Inbound)
+                      </div>
+                    </div>
+                    <div class="role-dates">Jun 2013 - Sep 2014</div>
+                  </div>
+                  <ul class="bullets">
+                    <li>
+                      Managed inbound calls advising customers on credit reports
+                      and related products.
+                    </li>
+                    <li>
+                      Explained complex financial information clearly and
+                      accurately.
+                    </li>
+                    <li>
+                      Liaised with internal departments and external
+                      organisations to resolve disputes.
+                    </li>
+                    <li>
+                      Maintained strong call control and supported onboarding of
+                      new team members.
+                    </li>
+                  </ul>
+                </article>
+
+                <article class="role">
+                  <div class="role-head">
+                    <div>
+                      <div class="role-company">Earlier Roles</div>
+                      <div class="role-title">John Lewis, JD Sports</div>
+                    </div>
+                  </div>
+                  <ul class="compact-list">
+                    <li>
+                      John Lewis - Customer Service Assistant, Nov 2012 - Jun
+                      2013.
+                    </li>
+                    <li>
+                      JD Sports - Customer Service Assistant, Dec 2010 - Nov
+                      2012.
+                    </li>
+                  </ul>
+                </article>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">Education</div>
+            <div class="card">
+              <div class="role-company" style="font-size: 13px">LLB Law</div>
+              <div class="role-title">Sheffield Hallam University</div>
+            </div>
+          </div>
+        </section>
+
+        <aside class="stack">
+          <div class="section">
+            <div class="section-title">Core Competencies</div>
+            <div class="meta-grid">
+              <div class="meta-card">
+                <div class="skill">
+                  <div class="skill-name">
+                    Customer Service and Communication
+                  </div>
+                  <ul class="skill-list">
+                    <li>High-volume call handling</li>
+                    <li>Clear verbal and written communication</li>
+                    <li>Complaint resolution and de-escalation</li>
+                    <li>Rapport building</li>
+                  </ul>
+                </div>
+
+                <div class="skill">
+                  <div class="skill-name">Administration and Accuracy</div>
+                  <ul class="skill-list">
+                    <li>Case management</li>
+                    <li>Record keeping</li>
+                    <li>Data quality</li>
+                    <li>Attention to detail</li>
+                    <li>Confidential information handling</li>
+                    <li>Document control</li>
+                  </ul>
+                </div>
+
+                <div class="skill">
+                  <div class="skill-name">Compliance and Process</div>
+                  <ul class="skill-list">
+                    <li>Regulated environments</li>
+                    <li>Process adherence</li>
+                    <li>Escalation judgement</li>
+                    <li>Service standards</li>
+                  </ul>
+                </div>
+
+                <div class="skill">
+                  <div class="skill-name">Systems and IT</div>
+                  <ul class="skill-list">
+                    <li>Microsoft Office: Word, Excel, Outlook, Teams</li>
+                    <li>Case management systems</li>
+                    <li>CRM systems</li>
+                    <li>Quick to learn new platforms</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">Additional Information</div>
+            <div class="card">
+              <ul class="mini-list">
+                <li>Strong IT literacy and quick to learn new systems</li>
+                <li>References available on request</li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </main>
+  </body>
+</html>
