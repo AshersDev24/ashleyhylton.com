@@ -1,6 +1,7 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 import { routes } from "../src/content/routes";
+import { SITE_URL } from "../src/lib/seo";
 
 const WCAG_TAGS = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"];
 
@@ -13,7 +14,7 @@ for (const { path } of routes) {
       await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
       await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
         "href",
-        `https://ashleyhylton.com${path === "/" ? "" : path}`,
+        `${SITE_URL}${path === "/" ? "" : path}`,
       );
       await expect(page.locator('meta[name="description"]')).toHaveAttribute("content", /^.{50,}$/);
       await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", /\/og\.png$/);
@@ -110,6 +111,6 @@ test("Home has Person structured data", async ({ page }) => {
 test("sitemap lists every route", async ({ request }) => {
   const xml = await (await request.get("/sitemap.xml")).text();
   for (const { path } of routes) {
-    expect(xml).toContain(`<loc>https://ashleyhylton.com${path === "/" ? "" : path}</loc>`);
+    expect(xml).toContain(`<loc>${SITE_URL}${path === "/" ? "" : path}</loc>`);
   }
 });

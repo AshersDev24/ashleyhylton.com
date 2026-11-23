@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
-export const SITE_URL = "https://ashleyhylton.com";
+// The apex domain redirects here, so canonical URLs must use www.
+export const SITE_URL = "https://www.ashleyhylton.com";
 export const SITE_NAME = "Ashley Hylton";
 export const JOB_TITLE = "Full-Stack TypeScript Engineer";
 export const DEFAULT_TITLE = `${SITE_NAME} | ${JOB_TITLE}`;

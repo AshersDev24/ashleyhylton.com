@@ -2,7 +2,7 @@
 
 Portfolio site for Ashley Hylton, full-stack TypeScript engineer in Nottingham, UK.
 
-**Live:** https://ashleyhylton.com
+**Live:** https://www.ashleyhylton.com (hosted on Appwrite Sites)
 
 ## Stack
 
