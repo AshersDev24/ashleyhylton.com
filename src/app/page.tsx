@@ -4,6 +4,7 @@ import { ContactLinks, EmailLine } from "@/components/ContactBlock";
 import { StatusPill } from "@/components/StatusPill";
 import { Timeline } from "@/components/Timeline";
 import { Chips } from "@/components/Chips";
+import { BublHubVisual, QuizWindow, TeaPoweredFan } from "@/components/ProjectVisuals";
 import {
   BagIcon,
   BrowserIcon,
@@ -238,6 +239,7 @@ export default function HomePage() {
           </h2>
           <div className="work">
             <article className="card feature lift">
+              <BublHubVisual />
               <div className="body">
                 <span className="tag">Featured · 2018 – present</span>
                 <h3>A ticketing platform, web to payouts, built by a team of one</h3>
@@ -257,10 +259,8 @@ export default function HomePage() {
             </article>
 
             <div className="rows">
-              <article className="card row lift">
-                <div className="tile" aria-hidden="true">
-                  TP
-                </div>
+              <article className="card row row-visual lift">
+                <TeaPoweredFan />
                 <div>
                   <span className="tag">Commercial · {TEA_POWERED_PERIOD}</span>
                   <h3 style={{ marginTop: 10 }}>Websites, shops and apps for 11 clients</h3>
@@ -282,10 +282,8 @@ export default function HomePage() {
                 </div>
               </article>
 
-              <article className="card row lift">
-                <div className="tile" aria-hidden="true">
-                  Q
-                </div>
+              <article className="card row row-visual lift">
+                <QuizWindow />
                 <div>
                   <span className="soon">Side project · for charity</span>
                   <h3>A live quiz-night app for a Nottingham charity</h3>

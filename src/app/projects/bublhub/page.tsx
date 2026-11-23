@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Chips } from "@/components/Chips";
+import { PhoneLineup } from "@/components/ProjectVisuals";
 import { GITHUB_URL } from "@/content/site";
 import { pageMetadata } from "@/lib/seo";
 
@@ -72,6 +73,12 @@ export default function BublHubCaseStudy() {
         the Node.js backend and Stripe Connect payouts. I launched it, took it
         offline to rebuild the infrastructure and add features, and I&apos;m
         relaunching it in 2027.
+      </p>
+
+      <PhoneLineup />
+      <p className="lineup-caption">
+        Communities, events and chat in one app.{" "}
+        <a href="https://www.bublhub.com">See it on bublhub.com</a>
       </p>
 
       <div className="cs-grid">

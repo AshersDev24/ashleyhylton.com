@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Chips } from "@/components/Chips";
+import { BublHubVisual, QuizWindow, TeaPoweredFan } from "@/components/ProjectVisuals";
 import { QUIZ_URL, TEA_POWERED_PERIOD } from "@/content/site";
 import { pageMetadata } from "@/lib/seo";
 
@@ -26,12 +27,9 @@ export default function ProjectsPage() {
 
       <section style={{ paddingBottom: 120 }}>
         <div className="wrap">
-          <div className="rows" data-reveal>
-            <article className="card row row-lg lift">
-              <div className="tile amber" aria-hidden="true">
-                B
-              </div>
-              <div>
+          <div className="work-grid" data-reveal>
+            <article className="card work-card work-wide lift">
+              <div className="work-body">
                 <span className="tag">BublHub · 2018 – present</span>
                 <h2>A ticketing platform, web to payouts, built by a team of one</h2>
                 <p className="muted">
@@ -46,13 +44,12 @@ export default function ProjectsPage() {
                   <span aria-hidden="true">→</span>
                 </Link>
               </div>
+              <BublHubVisual />
             </article>
 
-            <article className="card row row-lg lift">
-              <div className="tile" aria-hidden="true">
-                TP
-              </div>
-              <div>
+            <article className="card work-card lift">
+              <TeaPoweredFan />
+              <div className="work-body">
                 <span className="tag">
                   Tea Powered Projects · commercial · {TEA_POWERED_PERIOD}
                 </span>
@@ -70,11 +67,9 @@ export default function ProjectsPage() {
               </div>
             </article>
 
-            <article className="card row row-lg lift">
-              <div className="tile" aria-hidden="true">
-                Q
-              </div>
-              <div>
+            <article className="card work-card lift">
+              <QuizWindow />
+              <div className="work-body">
                 <span className="tag">Side project · OnlyNotts · Jul 2026</span>
                 <h2>A live quiz-night app for a Nottingham charity</h2>
                 <p className="muted">
