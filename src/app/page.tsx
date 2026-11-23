@@ -190,7 +190,7 @@ export default function HomePage() {
       </section>
 
       <section className="section" aria-labelledby="numbers-h">
-        <div className="wrap">
+        <div className="wrap" data-reveal>
           <span className="eyebrow">In numbers · November 2026</span>
           <h2 className="h2" id="numbers-h">
             What sits behind the claims
@@ -216,7 +216,7 @@ export default function HomePage() {
       </section>
 
       <section className="section" aria-labelledby="time-h">
-        <div className="wrap">
+        <div className="wrap" data-reveal>
           <span className="eyebrow">Timeline</span>
           <h2 className="h2" id="time-h">
             Self-taught, client work, and my own product
@@ -231,7 +231,7 @@ export default function HomePage() {
       </section>
 
       <section className="section" aria-labelledby="work-h">
-        <div className="wrap">
+        <div className="wrap" data-reveal>
           <span className="eyebrow">Selected work</span>
           <h2 className="h2" id="work-h">
             Projects
@@ -307,7 +307,7 @@ export default function HomePage() {
       </section>
 
       <section className="section" aria-labelledby="how-h">
-        <div className="wrap">
+        <div className="wrap" data-reveal>
           <span className="eyebrow">How I work</span>
           <h2 className="h2" id="how-h">
             Habits a team can rely on
@@ -336,7 +336,7 @@ export default function HomePage() {
       </section>
 
       <section className="section" id="contact" aria-labelledby="contact-h">
-        <div className="wrap">
+        <div className="wrap" data-reveal>
           <h2 className="eyebrow" id="contact-h">
             Contact
           </h2>

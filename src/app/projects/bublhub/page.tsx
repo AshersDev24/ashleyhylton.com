@@ -75,7 +75,7 @@ export default function BublHubCaseStudy() {
       </p>
 
       <div className="cs-grid">
-        <article className="prose">
+        <article className="prose" data-reveal>
           <h2>Year by year</h2>
           <div className="years">
             {years.map((year) => (
@@ -146,7 +146,7 @@ export default function BublHubCaseStudy() {
           </nav>
         </article>
 
-        <aside className="card facts" aria-labelledby="facts-h">
+        <aside data-reveal="1" className="card facts" aria-labelledby="facts-h">
           <h2 id="facts-h">Key facts</h2>
           <dl>
             <dt>Role</dt>

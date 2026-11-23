@@ -26,7 +26,7 @@ export default function ProjectsPage() {
 
       <section style={{ paddingBottom: 120 }}>
         <div className="wrap">
-          <div className="rows">
+          <div className="rows" data-reveal>
             <article className="card row row-lg lift">
               <div className="tile amber" aria-hidden="true">
                 B

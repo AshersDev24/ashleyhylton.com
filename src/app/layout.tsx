@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { RevealObserver } from "@/components/RevealObserver";
 import { DEFAULT_TITLE, SITE_NAME, SITE_URL } from "@/lib/seo";
 import { DEFAULT_THEME, themeInitScript } from "@/lib/theme";
 
@@ -62,6 +63,7 @@ export default function RootLayout({
         <SiteHeader />
         <main id="main">{children}</main>
         <SiteFooter />
+        <RevealObserver />
       </body>
     </html>
   );

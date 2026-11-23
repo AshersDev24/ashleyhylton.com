@@ -66,7 +66,7 @@ export default function TeaPoweredCaseStudy() {
       </p>
 
       <div className="cs-grid">
-        <article className="prose">
+        <article className="prose" data-reveal>
           <h2>What I built</h2>
           <div className="kinds3">
             {kinds.map((k) => (
@@ -131,7 +131,7 @@ export default function TeaPoweredCaseStudy() {
           </nav>
         </article>
 
-        <aside className="card facts" aria-labelledby="tp-facts-h">
+        <aside data-reveal="1" className="card facts" aria-labelledby="tp-facts-h">
           <h2 id="tp-facts-h">Key facts</h2>
           <dl>
             <dt>Role</dt>

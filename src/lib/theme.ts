@@ -9,7 +9,7 @@ export const DEFAULT_THEME: Theme = "dark";
  * flash. Storage can throw (private windows, blocked site data), so the
  * default stays in place if it does.
  */
-export const themeInitScript = `try{var t=localStorage.getItem("${THEME_STORAGE_KEY}");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}`;
+export const themeInitScript = `document.documentElement.classList.add("js");try{var t=localStorage.getItem("${THEME_STORAGE_KEY}");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}`;
 
 export function readTheme(): Theme {
   return document.documentElement.dataset.theme === "light" ? "light" : "dark";
