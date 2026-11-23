@@ -587,6 +587,19 @@ img {
   border-radius: 6px;
   color: var(--text);
   background: var(--surface-2);
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.chip svg {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  fill: var(--muted);
+}
+.chip:hover svg,
+.card:hover .chip svg {
+  fill: var(--accent);
 }
 .rows {
   display: flex;
@@ -1131,6 +1144,9 @@ img {
 
 /* motion: only when the visitor allows it */
 @media (prefers-reduced-motion: no-preference) {
+  .chip svg {
+    transition: fill 0.2s ease;
+  }
   .btn,
   .nav a,
   .links a,
