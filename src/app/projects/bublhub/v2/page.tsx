@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { TechPill } from "@/components/ui/TechPill";
@@ -11,11 +12,12 @@ import {
   IconCpu,
 } from "@/components/ui/icons";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "BublHub v2",
   description:
     "BublHub v2: redesign + migration (Firebase → Appwrite) and foundations built for future portability.",
-};
+  path: "/projects/bublhub/v2",
+});
 
 function Section({
   title,

@@ -124,7 +124,7 @@ export default function Hero() {
         <div className="grid gap-8 md:grid-cols-[1fr_auto]">
           <div className="flex flex-col gap-6">
             <p className="text-sm" style={{ color: "var(--muted)" }}>
-              UK • Full-Stack • Founder (BublHub)
+              Nottingham, UK • Full-stack TypeScript • Founder (BublHub)
             </p>
 
             <div className="max-w-2xl">
@@ -139,9 +139,11 @@ export default function Hero() {
                 className="text-base leading-relaxed"
                 style={{ color: "var(--muted)" }}
               >
-                I’m Ashley — a full-stack developer and founder of BublHub. I
-                split my time between building the product and shipping client
-                work at Tea Powered Projects.
+                I’m Ashley — a full-stack TypeScript engineer and the founder
+                of BublHub, an event ticketing and community platform I’ve
+                built end to end in Next.js, React Native and serverless
+                Node, with automated tests and CI throughout. I’m now looking
+                for a permanent engineering role on a product team.
               </p>
             </div>
 
@@ -176,7 +178,7 @@ export default function Hero() {
             <div className="w-full max-w-[280px] space-y-2">
               <StatusRow
                 label="Current status"
-                value="Open for work"
+                value="Open to permanent roles"
                 tone="green"
               />
               <StatusRow label="BublHub" value="In development" tone="amber" />
