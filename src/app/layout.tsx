@@ -1,9 +1,10 @@
 import "./globals.css";
-import type { Metadata } from "next";
-import SiteHeader from "@/components/SiteHeader";
-import SiteFooter from "@/components/SiteFooter";
-import { Inter, Space_Grotesk } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
+import { SiteHeader } from "@/components/SiteHeader";
+import { SiteFooter } from "@/components/SiteFooter";
 import { DEFAULT_TITLE, SITE_NAME, SITE_URL } from "@/lib/seo";
+import { DEFAULT_THEME, themeInitScript } from "@/lib/theme";
 
 const bodyFont = Inter({
   subsets: ["latin"],
@@ -17,6 +18,13 @@ const headingFont = Space_Grotesk({
   display: "swap",
 });
 
+const monoFont = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-mono",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
@@ -27,20 +35,29 @@ export const metadata: Metadata = {
   // Twitter card through pageMetadata() in src/lib/seo.ts.
 };
 
+export const viewport: Viewport = {
+  themeColor: "#0E1013",
+};
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body
-        className={`${bodyFont.variable} ${headingFont.variable} min-h-dvh`}
-      >
+    // The inline script may change data-theme before React hydrates.
+    <html
+      lang="en-GB"
+      data-theme={DEFAULT_THEME}
+      className={`${bodyFont.variable} ${headingFont.variable} ${monoFont.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
+      <body>
         <SiteHeader />
-        <main className="mx-auto max-w-5xl px-4 py-10 md:py-12">
-          {children}
-        </main>
+        <main id="main">{children}</main>
         <SiteFooter />
       </body>
     </html>

@@ -43,3 +43,8 @@ next-env.d.ts
 .idea/
 
 *:Zone.Identifier
+
+# playwright
+/test-results/
+/playwright-report/
+/blob-report/
