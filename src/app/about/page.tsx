@@ -9,6 +9,14 @@ import {
   IconServer,
   IconArrowRight,
 } from "@/components/ui/icons";
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata({
+  title: "About",
+  description:
+    "About Ashley Hylton: a UK-based full-stack TypeScript engineer working across web, mobile and backend, and how he works.",
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (

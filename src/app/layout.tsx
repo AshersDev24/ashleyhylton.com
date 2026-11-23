@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { Inter, Space_Grotesk } from "next/font/google";
+import { DEFAULT_TITLE, SITE_NAME, SITE_URL } from "@/lib/seo";
 
 const bodyFont = Inter({
   subsets: ["latin"],
@@ -17,37 +18,13 @@ const headingFont = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ashleyhylton.com"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Ashley Hylton | Software Developer",
-    template: "%s | Ashley Hylton",
+    default: DEFAULT_TITLE,
+    template: `%s | ${SITE_NAME}`,
   },
-  description:
-    "Developer portfolio: product work, client work, and case studies.",
-  openGraph: {
-    type: "website",
-    title: "Ashley Hylton | Software Developer",
-    description:
-      "Developer portfolio: product work, client work, and case studies.",
-    url: "https://ashleyhylton.com",
-    siteName: "Ashley Hylton",
-    images: [
-      {
-        url: "/images/me.jpg",
-        alt: "Ashley Hylton",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Ashley Hylton | Software Developer",
-    description:
-      "Developer portfolio: product work, client work, and case studies.",
-    images: ["/images/me.jpg"],
-  },
-  alternates: {
-    canonical: "https://ashleyhylton.com",
-  },
+  // Each page sets its own description, canonical URL, Open Graph and
+  // Twitter card through pageMetadata() in src/lib/seo.ts.
 };
 
 export default function RootLayout({

@@ -48,7 +48,7 @@ export const projects: Project[] = [
       "Node.js",
       "Appwrite",
       "Stripe",
-      "GitLab CI",
+      "GitHub Actions",
       "Figma",
       "Firebase (early)",
       "GCP (early)",
