@@ -14,6 +14,8 @@ export function RevealObserver() {
   const pathname = usePathname();
 
   useEffect(() => {
+    // Tells the inline head script the reveal is running (see theme.ts).
+    document.documentElement.dataset.revealReady = "1";
     const targets = document.querySelectorAll("[data-reveal]:not(.is-in)");
     if (typeof IntersectionObserver !== "function") {
       targets.forEach((el) => el.classList.add("is-in"));

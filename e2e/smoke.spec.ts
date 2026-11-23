@@ -172,3 +172,64 @@ test("the client strip moves, and the button pauses it", async ({ page }) => {
   await expect(track).toHaveAttribute("data-paused", "true");
   await expect(track).toHaveCSS("animation-play-state", "paused");
 });
+
+test.describe("review fixes", () => {
+  test("the header still hides after clicking a link in it", async ({ page }) => {
+    await page.goto("/");
+    await page.waitForLoadState("networkidle");
+    await page.getByRole("navigation", { name: "Main" }).getByRole("link", { name: "Projects" }).click();
+    await expect(page).toHaveURL(/\/projects$/);
+    await page.evaluate(() => window.scrollTo(0, 300));
+    await page.evaluate(() => window.scrollTo(0, 700));
+    const header = page.locator("header.top");
+    await expect(header).toHaveAttribute("data-hidden", "true");
+    await expect.poll(() => header.evaluate((h) => h.getBoundingClientRect().bottom)).toBeLessThanOrEqual(1);
+  });
+
+  test("an in-page jump upwards lands below the header", async ({ page }) => {
+    await page.goto("/");
+    await page.waitForLoadState("networkidle");
+    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+    await page.evaluate(() => window.scrollBy(0, -40)); // scrolling up brings the header back
+    await page.evaluate(() => (location.hash = "#numbers-h"));
+    const header = page.locator("header.top");
+    await expect(header).toHaveAttribute("data-hidden", "false");
+    const headerBottom = await header.evaluate((h) => h.getBoundingClientRect().bottom);
+    // The jump scrolls smoothly and the section rises in, so wait for both.
+    await expect
+      .poll(() => page.locator("#numbers-h").evaluate((h) => h.getBoundingClientRect().top), { timeout: 4000 })
+      .toBeGreaterThanOrEqual(headerBottom);
+  });
+
+  test("sections still appear if the JavaScript bundle fails to load", async ({ page }) => {
+    await page.route(/\/_next\/static\/chunks\/.*\.js(\?|$)/, (route) => route.abort());
+    await page.goto("/projects");
+    await expect(page.locator(".work-grid")).toHaveCSS("opacity", "1", { timeout: 6000 });
+  });
+
+  test("printing shows every section", async ({ page }) => {
+    await page.goto("/projects/bublhub");
+    await page.emulateMedia({ media: "print" });
+    for (const el of await page.locator("[data-reveal]").all()) {
+      await expect(el).toHaveCSS("opacity", "1");
+    }
+  });
+
+  test("the Home BublHub phone rises from the bottom without its top cut off", async ({ page }) => {
+    await page.goto("/");
+    const visual = await page.locator(".feature .visual-bublhub").boundingBox();
+    const phone = await page.locator(".feature .visual-bublhub .phone").boundingBox();
+    expect(phone!.y).toBeGreaterThanOrEqual(visual!.y);
+  });
+
+  test("the case-study phones fit at tablet width", async ({ page }) => {
+    await page.setViewportSize({ width: 700, height: 900 });
+    await page.goto("/projects/bublhub");
+    const lineup = (await page.locator(".lineup").boundingBox())!;
+    for (const phone of await page.locator(".lineup .phone").all()) {
+      const box = (await phone.boundingBox())!;
+      expect(box.x).toBeGreaterThanOrEqual(lineup.x - 1);
+      expect(box.x + box.width).toBeLessThanOrEqual(lineup.x + lineup.width + 1);
+    }
+  });
+});

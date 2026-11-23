@@ -8,8 +8,12 @@ export const DEFAULT_THEME: Theme = "dark";
  * this swaps to a stored choice so a light-theme visitor never sees a dark
  * flash. Storage can throw (private windows, blocked site data), so the
  * default stays in place if it does.
+ *
+ * It also adds `js` to <html>, which lets sections start hidden and rise into
+ * view. If the bundle never runs (RevealObserver never sets
+ * data-reveal-ready), `js` comes off after 3s so nothing stays hidden.
  */
-export const themeInitScript = `document.documentElement.classList.add("js");try{var t=localStorage.getItem("${THEME_STORAGE_KEY}");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}`;
+export const themeInitScript = `(function(){var d=document.documentElement;d.classList.add("js");setTimeout(function(){if(!d.dataset.revealReady)d.classList.remove("js")},3000);try{var t=localStorage.getItem("${THEME_STORAGE_KEY}");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}})()`;
 
 export function readTheme(): Theme {
   return document.documentElement.dataset.theme === "light" ? "light" : "dark";

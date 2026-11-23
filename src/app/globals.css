@@ -141,13 +141,21 @@ img {
 .top[data-scrolled="true"] {
   border-bottom-color: var(--line);
 }
-/* Stays put while anything inside it has keyboard focus. */
-.top[data-hidden="true"]:not(:focus-within) {
+/* Stays put while anything inside it has keyboard focus. A mouse click
+   also focuses a link, so :focus-within alone would pin it after any click. */
+.top[data-hidden="true"]:not(:has(:focus-visible)) {
   transform: translateY(-100%);
 }
-/* In-page links land below the header when it is showing. */
-[id] {
-  scroll-margin-top: 88px;
+/* Anchors and keyboard focus land below the header when it is showing.
+   The header wraps to two lines on phones. The extra 28px covers a section
+   that is still lowered for its reveal when the jump is measured. */
+html {
+  scroll-padding-top: 116px;
+}
+@media (max-width: 560px) {
+  html {
+    scroll-padding-top: 168px;
+  }
 }
 .top .wrap {
   display: flex;
@@ -1202,10 +1210,13 @@ main::after {
       transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1),
       border-color 0.35s ease;
   }
-  /* Hidden only once JS has flagged <html>, so no-JS visitors see it all. */
-  .js [data-reveal]:not(.is-in) {
-    opacity: 0;
-    transform: translateY(28px);
+  /* Hidden only once JS has flagged <html>, so no-JS visitors see it all,
+     and only on screen, so a printed page has every section. */
+  @media screen {
+    .js [data-reveal]:not(.is-in) {
+      opacity: 0;
+      transform: translateY(28px);
+    }
   }
   [data-reveal] {
     transition:
@@ -1282,6 +1293,14 @@ main::after {
 }
 .feature .visual-bublhub {
   min-height: 300px;
+}
+.feature .visual-bublhub .phone {
+  width: 160px;
+  padding: 6px;
+  border-radius: 26px;
+}
+.feature .visual-bublhub .phone img {
+  border-radius: 21px;
 }
 .row.row-visual {
   grid-template-columns: minmax(0, 1fr);
@@ -1660,6 +1679,23 @@ main::after {
   }
 }
 
+@media (max-width: 760px) {
+  .lineup {
+    height: 440px;
+  }
+  .lineup .phone {
+    width: 180px;
+  }
+  .lineup .phone:nth-child(1) {
+    transform: translateX(-150px) rotateY(22deg) scale(0.88);
+  }
+  .lineup .phone:nth-child(2) {
+    width: 190px;
+  }
+  .lineup .phone:nth-child(3) {
+    transform: translateX(150px) rotateY(-22deg) scale(0.88);
+  }
+}
 @media (max-width: 560px) {
   .lineup {
     height: 340px;
@@ -1780,7 +1816,7 @@ main::after {
   .strip-group a:focus-visible .browser {
     transform: translateY(-6px);
   }
-  @media (min-width: 561px) {
+  @media (min-width: 761px) {
     .lineup:hover .phone:nth-child(1) {
       transform: translateX(-250px) rotateY(14deg) scale(0.9);
     }
