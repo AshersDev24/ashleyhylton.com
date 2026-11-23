@@ -1,5 +1,7 @@
 import Image from "next/image";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { pageMetadata } from "@/lib/seo";
 import { projects } from "@/content/projects";
 import { ProjectLogo } from "@/components/projects/ProjectLogo";
 import { Button } from "@/components/ui/Button";
@@ -20,6 +22,22 @@ export const dynamicParams = false;
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const project = projects.find((p) => p.slug === slug);
+  if (!project) return {};
+
+  return pageMetadata({
+    title: `${project.title} case study`,
+    description: `${project.title}: ${project.subtitle}. ${project.role}, ${project.period}.`,
+    path: `/projects/${project.slug}`,
+  });
 }
 
 export default async function ProjectDetail({
