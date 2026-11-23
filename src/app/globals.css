@@ -118,9 +118,26 @@ img {
   top: 12px;
 }
 
-/* header */
+/* header: sticks to the top, slides away while scrolling down */
 .top {
-  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid transparent;
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+.top[data-scrolled="true"] {
+  border-bottom-color: var(--line);
+}
+/* Stays put while anything inside it has keyboard focus. */
+.top[data-hidden="true"]:not(:focus-within) {
+  transform: translateY(-100%);
+}
+/* In-page links land below the header when it is showing. */
+[id] {
+  scroll-margin-top: 88px;
 }
 .top .wrap {
   display: flex;
@@ -1144,6 +1161,11 @@ img {
 
 /* motion: only when the visitor allows it */
 @media (prefers-reduced-motion: no-preference) {
+  .top {
+    transition:
+      transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1),
+      border-color 0.35s ease;
+  }
   /* Hidden only once JS has flagged <html>, so no-JS visitors see it all. */
   .js [data-reveal]:not(.is-in) {
     opacity: 0;

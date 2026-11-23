@@ -1,10 +1,11 @@
 import Link from "next/link";
+import { HeaderShell } from "./HeaderShell";
 import { NavLinks } from "./NavLinks";
 import { ThemeToggle } from "./ThemeToggle";
 
 export function SiteHeader() {
   return (
-    <header className="top">
+    <HeaderShell>
       <a className="skip" href="#main">
         Skip to content
       </a>
@@ -17,6 +18,6 @@ export function SiteHeader() {
           <ThemeToggle />
         </nav>
       </div>
-    </header>
+    </HeaderShell>
   );
 }

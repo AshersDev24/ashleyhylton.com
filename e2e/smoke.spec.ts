@@ -65,6 +65,23 @@ test("the CV page serves the PDF", async ({ page, request }) => {
   expect(response.headers()["content-type"]).toContain("application/pdf");
 });
 
+test("the header hides on scroll down, returns on scroll up and when focused", async ({ page }) => {
+  await page.goto("/");
+  await page.waitForLoadState("networkidle"); // listeners attach on hydration
+  const header = page.locator("header.top");
+  await page.evaluate(() => window.scrollTo(0, 600));
+  await expect(header).toHaveAttribute("data-hidden", "true");
+  await page.evaluate(() => window.scrollTo(0, 400));
+  await expect(header).toHaveAttribute("data-hidden", "false");
+
+  await page.evaluate(() => window.scrollTo(0, 900));
+  await expect(header).toHaveAttribute("data-hidden", "true");
+  await page.keyboard.press("Tab");
+  const skip = page.getByRole("link", { name: "Skip to content" });
+  await expect(skip).toBeFocused();
+  await expect(skip).toBeInViewport();
+});
+
 test("the theme choice survives a reload", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("button", { name: "Switch to light theme" }).click();
