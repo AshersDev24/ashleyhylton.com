@@ -6,6 +6,7 @@ export const LINKEDIN_URL = "https://www.linkedin.com/in/ashley-hylton-8b1271142
 export const REPO_URL = "https://github.com/AshersDev24/ashleyhylton.com";
 export const CV_PAGE = "/cv";
 export const CV_PDF = "/Ashley_Hylton_CV.pdf";
+export const QUIZ_URL = "https://onlynotts-quiz.vercel.app/";
 
 export const STATUS = "Open to permanent roles · hybrid";
 export const LOCATION = "Nottingham, UK";

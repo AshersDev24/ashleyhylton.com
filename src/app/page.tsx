@@ -17,6 +17,7 @@ import {
 import {
   CV_PAGE,
   GITHUB_URL,
+  QUIZ_URL,
   LINKEDIN_URL,
   TEA_POWERED_PERIOD,
   stats,
@@ -294,6 +295,10 @@ export default function HomePage() {
                     laptop. It ran live on the night.
                   </p>
                   <Chips items={["Next.js 16", "Tailwind 4", "BroadcastChannel"]} />
+                  <a className="more" href={QUIZ_URL}>
+                    See it live<span className="sr-only">: OnlyNotts quiz app</span>{" "}
+                    <span aria-hidden="true">↗</span>
+                  </a>
                 </div>
               </article>
             </div>

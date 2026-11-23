@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Chips } from "@/components/Chips";
-import { TEA_POWERED_PERIOD } from "@/content/site";
+import { QUIZ_URL, TEA_POWERED_PERIOD } from "@/content/site";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -85,6 +85,10 @@ export default function ProjectsPage() {
                   the night and did its job.
                 </p>
                 <Chips items={["Next.js 16", "Tailwind 4", "BroadcastChannel", "No backend"]} />
+                <a className="more" href={QUIZ_URL}>
+                  See it live<span className="sr-only">: OnlyNotts quiz app</span>{" "}
+                  <span aria-hidden="true">↗</span>
+                </a>
               </div>
             </article>
           </div>
