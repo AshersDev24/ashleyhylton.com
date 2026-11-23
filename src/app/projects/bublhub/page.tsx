@@ -133,7 +133,7 @@ export default function BublHubCaseStudy() {
           </p>
           <div className="callout">
             <span className="eyebrow">Incident · email provider suspension</span>
-            <p>Our email provider suspended the account while the product was live.</p>
+            <p>Our email provider suspended the account.</p>
           </div>
 
           <nav className="nextcs" aria-label="More case studies">

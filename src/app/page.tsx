@@ -79,7 +79,7 @@ const habits: { title: string; body: React.ReactNode }[] = [
   },
   {
     title: "Make failures visible",
-    body: "Sentry across web, app and backend. I've handled live incidents too, including a suspension by our email provider.",
+    body: "Sentry across web, app and backend. I've handled incidents too, including a suspension by our email provider.",
   },
   {
     title: "Fundamentals first, AI second",
