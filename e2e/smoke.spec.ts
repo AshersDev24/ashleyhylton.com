@@ -131,3 +131,44 @@ test("sitemap lists every route", async ({ request }) => {
     expect(xml).toContain(`<loc>${SITE_URL}${path === "/" ? "" : path}</loc>`);
   }
 });
+
+test.describe("with reduced motion", () => {
+  test.use({ reducedMotion: "reduce" });
+
+  for (const path of ["/", "/projects/tea-powered-projects"]) {
+    test(`${path} shows everything and nothing loops`, async ({ page }) => {
+      await page.goto(path);
+      for (const el of await page.locator("[data-reveal]").all()) {
+        await expect(el).toHaveCSS("opacity", "1");
+      }
+      const track = page.locator(".strip-track");
+      if (await track.count()) {
+        await expect(track).toHaveCSS("animation-name", "none");
+        await expect(page.getByRole("button", { name: "Pause" })).toBeHidden();
+      }
+    });
+  }
+});
+
+test.describe("without JavaScript", () => {
+  test.use({ javaScriptEnabled: false });
+
+  test("every section is visible", async ({ page }) => {
+    await page.goto("/");
+    for (const el of await page.locator("[data-reveal]").all()) {
+      await expect(el).toHaveCSS("opacity", "1");
+    }
+  });
+});
+
+test("the client strip moves, and the button pauses it", async ({ page }) => {
+  await page.goto("/projects/tea-powered-projects");
+  const track = page.locator(".strip-track");
+  await expect(track).toHaveCSS("animation-play-state", "running");
+  await page.getByRole("button", { name: "Pause" }).click();
+  await page.mouse.move(0, 0); // off the strip, so hover isn't what paused it
+  await page.locator("h1").focus();
+  await expect(page.getByRole("button", { name: "Play" })).toBeVisible();
+  await expect(track).toHaveAttribute("data-paused", "true");
+  await expect(track).toHaveCSS("animation-play-state", "paused");
+});

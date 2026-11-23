@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Chips } from "@/components/Chips";
+import { ClientStrip } from "@/components/ClientStrip";
 import { BagIcon, BrowserIcon, HouseIcon, PhoneIcon } from "@/components/icons";
 import {
   TEA_POWERED_PERIOD,
@@ -64,6 +65,14 @@ export default function TeaPoweredCaseStudy() {
         clinics to Langley Holdings, and from the front end down to
         e-commerce, booking flows, integrations and the database.
       </p>
+
+      <section className="strip-section" aria-labelledby="strip-h">
+        <span className="eyebrow">Tea Powered Projects</span>
+        <h2 className="h2" id="strip-h">
+          The client work, live
+        </h2>
+        <ClientStrip />
+      </section>
 
       <div className="cs-grid">
         <article className="prose" data-reveal>
