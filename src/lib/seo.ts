@@ -2,9 +2,16 @@ import type { Metadata } from "next";
 
 export const SITE_URL = "https://ashleyhylton.com";
 export const SITE_NAME = "Ashley Hylton";
-export const DEFAULT_TITLE = "Ashley Hylton | Full-Stack TypeScript Engineer";
+export const JOB_TITLE = "Full-Stack TypeScript Engineer";
+export const DEFAULT_TITLE = `${SITE_NAME} | ${JOB_TITLE}`;
 
-const OG_IMAGE = { url: "/images/me.jpg", alt: "Ashley Hylton" };
+// Generated at build time by src/app/og.png/route.tsx.
+const OG_IMAGE = {
+  url: "/og.png",
+  width: 1200,
+  height: 630,
+  alt: `${SITE_NAME}, ${JOB_TITLE}`,
+};
 
 type PageSeo = {
   /** Page title without the site name. Leave out for the home page. */
@@ -26,13 +33,14 @@ export function pageMetadata({ title, description, path }: PageSeo): Metadata {
   const fullTitle = title ? `${title} | ${SITE_NAME}` : DEFAULT_TITLE;
 
   return {
-    // Absolute, because a plain string title in a nested layout (such as
-    // /projects) stops the root title template reaching pages below it.
+    // Absolute, so a nested layout's title can never stop the root
+    // template reaching pages below it.
     title: { absolute: fullTitle },
     description,
     alternates: { canonical: path },
     openGraph: {
       type: "website",
+      locale: "en_GB",
       title: fullTitle,
       description,
       url: path,
