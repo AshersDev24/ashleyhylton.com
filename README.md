@@ -1,63 +1,39 @@
 # ashleyhylton.com
 
-Personal portfolio site for Ashley Hylton — UK-based full-stack software developer.
+Portfolio site for Ashley Hylton, full-stack TypeScript engineer in Nottingham, UK.
 
-This site showcases selected production work, real-world experience, and a small reusable UI system built specifically for this project. It is intentionally minimal, fast, and content-focused.
+**Live:** https://ashleyhylton.com
 
-**Live:** https://www.ashleyhylton.com
+## Stack
 
----
+- Next.js (App Router), React and TypeScript; every page is statically generated
+- Plain CSS with design tokens per theme (`src/app/globals.css`), dark by default with a remembered light option
+- Fonts self-hosted with `next/font`: Space Grotesk, Inter, JetBrains Mono
+- Vitest and React Testing Library for components; Playwright with axe for every route
+- GitHub Actions runs lint, types, unit tests, the build and the end-to-end tests on every pull request
 
-## Overview
+## Structure
 
-- Built with Next.js (App Router)
-- Server-first, content-driven architecture
-- Reusable UI primitives (buttons, pills, icons, project logos)
-- Fully responsive, accessible, and motion-aware
-- No component libraries or heavy abstractions
-
-The goal of this site is clarity over cleverness — clean structure, readable code, and real projects.
-
----
-
-## Tech Stack
-
-- Next.js
-- React
-- TypeScript
-- Tailwind CSS
-- Framer Motion
-
----
-
-## Project Structure
-
-src/
-app/ App Router pages and layouts
-components/ Reusable UI and page-level components
-content/ Typed content sources (projects, copy)
-styles/ Global styles
-public/ Static assets
-
-
----
+```
+src/app/            routes: /, /projects, /projects/bublhub, /projects/tea-powered-projects,
+                    /about, /contact, /cv, plus sitemap, robots and the OG image (/og.png)
+src/components/     header, footer, theme toggle, copy email, timeline and small shared pieces
+src/content/        facts used on more than one page, and the route list
+src/lib/            page metadata (seo.ts) and theme helpers (theme.ts)
+e2e/                Playwright smoke and accessibility tests
+public/             the CV PDF (no phone number: keep it that way)
+```
 
 ## Development
 
 ```bash
 npm install
-npm run dev
+npm run dev            # http://localhost:3000
+npm run lint
+npm run typecheck
+npm test               # Vitest
+npm run build
+npm run test:e2e       # Playwright against the production build on :3100
+```
 
-The site will be available at http://localhost:3000.
-
-Deployment
-
-The site is deployed independently and is not tied to any specific hosting provider.
-Build output is framework-standard and portable.
-
-License
-
-All rights reserved.
-
-This repository is provided for reference and portfolio review only.
-
+The first Playwright run needs a browser: `npx playwright install chromium`.
