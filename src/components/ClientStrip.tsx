@@ -16,7 +16,7 @@ function Group({ copy }: { copy?: boolean }) {
             </div>
             <span className="strip-caption">
               <b>{client.name}</b>{" "}
-              <span className="sr-only">case study</span>
+              <span className="sr-only">website</span>
               <span aria-hidden="true">{client.type}</span>
             </span>
           </a>

@@ -5,7 +5,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Contact",
   description:
-    "Email Ashley Hylton about permanent full-stack engineering roles. Open to hybrid roles in and around Nottingham.",
+    "Email Ashley Hylton about permanent full-stack engineering roles. Remote preferred, or hybrid in the East Midlands.",
   path: "/contact",
 });
 

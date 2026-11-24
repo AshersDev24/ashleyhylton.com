@@ -22,6 +22,19 @@
   --frame-dot: #4a4f59;
   --frame-text: #a3a9b5;
   --bh-cyan: #22d3ee;
+  /* Section gradients: one colour pair per section, faint in light. */
+  --tone-o: 16%;
+  --tone-line: 30%;
+  --c-amber: #f59e0b;
+  --c-amber-2: #f97316;
+  --c-rose: #f43f5e;
+  --c-rose-2: #f59e0b;
+  --c-teal: #14b8a6;
+  --c-teal-2: #84cc16;
+  --c-violet: #8b5cf6;
+  --c-violet-2: #ec4899;
+  --c-sky: #3b82f6;
+  --c-sky-2: #14b8a6;
   color-scheme: light;
 }
 
@@ -39,6 +52,8 @@
   --ok: #4ade80;
   --glow: color-mix(in srgb, #f59e0b 20%, transparent);
   --dots: color-mix(in srgb, #ecedef 7%, transparent);
+  --tone-o: 22%;
+  --tone-line: 34%;
   color-scheme: dark;
 }
 
@@ -269,6 +284,119 @@ html {
   padding: 96px 0;
   border-top: 1px solid var(--line);
 }
+
+/* Section decoration: a wash, two gradient pools, a ring, a tilted tile and
+   a dot patch, layered behind the content. Each tone sets its own colours
+   and moves the shapes so no two sections look the same. */
+.has-decor {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.decor {
+  --c1: var(--c-amber);
+  --c2: var(--c-amber-2);
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--c1) calc(var(--tone-o) / 3), transparent),
+    transparent 45%,
+    transparent 65%,
+    color-mix(in srgb, var(--c2) calc(var(--tone-o) / 4), transparent)
+  );
+}
+.decor > span {
+  position: absolute;
+  display: block;
+}
+.dx-pool {
+  border-radius: 50%;
+}
+.dx-pool-a {
+  width: 560px;
+  height: 560px;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--c1) var(--tone-o), transparent), transparent);
+}
+.dx-pool-b {
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--c2) var(--tone-o), transparent), transparent);
+}
+.dx-ring {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  border: 1.5px solid color-mix(in srgb, var(--c1) var(--tone-line), transparent);
+  outline: 1px dashed color-mix(in srgb, var(--c1) calc(var(--tone-line) * 0.7), transparent);
+  outline-offset: 18px;
+}
+.dx-tile {
+  width: 150px;
+  height: 150px;
+  border-radius: 32px;
+  border: 1px solid color-mix(in srgb, var(--c2) calc(var(--tone-line) * 1.3), transparent);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--c2) calc(var(--tone-o) * 1.6), transparent),
+    color-mix(in srgb, var(--c1) calc(var(--tone-o) / 3), transparent)
+  );
+  transform: rotate(18deg);
+}
+.dx-dots {
+  width: 200px;
+  height: 140px;
+  background-image: radial-gradient(color-mix(in srgb, var(--c1) 45%, transparent) 1.5px, transparent 1.5px);
+  background-size: 16px 16px;
+  -webkit-mask-image: radial-gradient(closest-side, black, transparent);
+  mask-image: radial-gradient(closest-side, black, transparent);
+}
+
+/* numbers: amber, pools top right and bottom left */
+.decor-amber .dx-pool-a { top: -220px; right: -160px; }
+.decor-amber .dx-pool-b { bottom: -200px; left: -140px; }
+.decor-amber .dx-ring { top: 24px; right: 3%; width: 200px; height: 200px; }
+.decor-amber .dx-tile { bottom: 36px; left: 3%; }
+.decor-amber .dx-dots { top: 32px; left: 38%; }
+
+/* timeline: violet into pink, a wide pool under the ruler */
+.decor-violet { --c1: var(--c-violet); --c2: var(--c-violet-2); }
+.decor-violet .dx-pool-a { top: 10%; left: -220px; }
+.decor-violet .dx-pool-b { top: -160px; right: 18%; }
+.decor-violet .dx-ring { bottom: -90px; right: -60px; width: 300px; height: 300px; }
+.decor-violet .dx-tile { top: 48px; right: 5%; transform: rotate(-12deg); width: 110px; height: 110px; border-radius: 26px; }
+.decor-violet .dx-dots { bottom: 40px; left: 30%; }
+
+/* projects: teal into lime */
+.decor-teal { --c1: var(--c-teal); --c2: var(--c-teal-2); }
+.decor-teal .dx-pool-a { bottom: -240px; right: -180px; }
+.decor-teal .dx-pool-b { top: -140px; left: 20%; }
+.decor-teal .dx-ring { top: 56px; left: -110px; width: 280px; height: 280px; }
+.decor-teal .dx-tile { top: 64px; right: 4%; transform: rotate(32deg); }
+.decor-teal .dx-dots { bottom: 60px; right: 26%; }
+
+/* how I work: rose into amber */
+.decor-rose { --c1: var(--c-rose); --c2: var(--c-rose-2); }
+.decor-rose .dx-pool-a { top: -200px; left: 30%; }
+.decor-rose .dx-pool-b { bottom: -180px; right: -120px; }
+.decor-rose .dx-ring { bottom: -60px; left: -70px; width: 200px; height: 200px; }
+.decor-rose .dx-tile { top: 40px; right: 8%; transform: rotate(-24deg); border-radius: 50% 50% 32px 50%; }
+.decor-rose .dx-dots { top: 48px; left: 4%; }
+
+/* contact and closing sections: blue into teal */
+.decor-sky { --c1: var(--c-sky); --c2: var(--c-sky-2); }
+.decor-sky .dx-pool-a { top: -180px; right: 10%; }
+.decor-sky .dx-pool-b { bottom: -220px; left: -100px; }
+.decor-sky .dx-ring { top: 50%; right: -100px; width: 320px; height: 320px; transform: translateY(-50%); }
+.decor-sky .dx-tile { bottom: 30px; right: 30%; transform: rotate(45deg); width: 70px; height: 70px; border-radius: 18px; }
+.decor-sky .dx-dots { top: 36px; right: 22%; }
+
+/* Lift content above the decoration's stacking layer. */
+.has-decor > .wrap {
+  position: relative;
+}
 .eyebrow {
   font-family: var(--font-mono), monospace;
   font-size: 13px;
@@ -494,31 +622,6 @@ main::after {
 }
 
 /* timeline */
-.filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 28px;
-}
-.fbtn {
-  appearance: none;
-  min-height: 44px;
-  padding: 0 16px;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  background: var(--surface);
-  color: var(--text);
-  font: 500 14px var(--font-body), sans-serif;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-.fbtn[aria-pressed="true"] {
-  background: var(--accent-fill);
-  color: var(--on-accent);
-  border-color: transparent;
-}
 .ruler {
   display: grid;
   grid-template-columns: repeat(10, minmax(0, 1fr));
@@ -558,22 +661,15 @@ main::after {
 }
 .events {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 32px 24px;
   list-style: none;
   padding: 0;
   margin: 28px 0 0;
 }
 .events li {
-  border-top: 2px solid var(--line);
+  border-top: 2px solid var(--accent-fill);
   padding-top: 16px;
-}
-.events li.own {
-  border-top-color: var(--accent-fill);
-}
-.events li.learn {
-  border-top-style: dashed;
-  border-top-color: var(--muted);
 }
 .events b {
   font-family: var(--font-mono), monospace;
@@ -591,29 +687,6 @@ main::after {
   font-size: 15px;
   color: var(--muted);
 }
-.lane {
-  font-family: var(--font-mono), monospace;
-  font-size: 12px;
-  padding: 4px 10px;
-  border-radius: 6px;
-  display: inline-block;
-  margin-bottom: 12px;
-}
-.lane-own {
-  background: var(--accent-soft);
-  color: var(--text);
-}
-.lane-client {
-  background: var(--surface-2);
-  color: var(--text);
-  border: 1px solid var(--line);
-}
-.lane-learn {
-  background: transparent;
-  color: var(--text);
-  border: 1px dashed var(--muted);
-}
-
 /* work */
 .work {
   display: grid;
@@ -1247,8 +1320,7 @@ main::after {
       color 0.2s ease;
   }
   .build a,
-  .lift,
-  .fbtn {
+  .lift {
     transition:
       transform 0.18s ease,
       border-color 0.18s ease,
@@ -1259,6 +1331,15 @@ main::after {
   .lift:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 24px -14px rgba(0, 0, 0, 0.35);
+  }
+  .decor .dx-pool-a {
+    animation: drift-a 22s ease-in-out infinite alternate;
+  }
+  .decor .dx-pool-b {
+    animation: drift-b 26s ease-in-out infinite alternate;
+  }
+  .decor .dx-ring {
+    animation: float 14s ease-in-out infinite alternate;
   }
 }
 
@@ -1823,5 +1904,46 @@ main::after {
     .lineup:hover .phone:nth-child(3) {
       transform: translateX(250px) rotateY(-14deg) scale(0.9);
     }
+  }
+}
+
+@keyframes drift-a {
+  to {
+    translate: 60px 40px;
+  }
+}
+@keyframes drift-b {
+  to {
+    translate: -50px -30px;
+  }
+}
+@keyframes float {
+  to {
+    translate: 0 -16px;
+  }
+}
+
+/* Smaller shapes on phones, and the tile steps aside so text stays clear. */
+@media (max-width: 560px) {
+  .dx-pool-a {
+    width: 360px;
+    height: 360px;
+  }
+  .dx-pool-b {
+    width: 280px;
+    height: 280px;
+  }
+  .dx-ring {
+    scale: 0.6;
+  }
+  .decor .dx-tile,
+  .decor .dx-dots {
+    display: none;
+  }
+}
+
+@media print {
+  .decor {
+    display: none;
   }
 }

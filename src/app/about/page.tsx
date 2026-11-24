@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Decor } from "@/components/Decor";
 import { CV_PAGE, TEA_POWERED_PERIOD } from "@/content/site";
 import { pageMetadata } from "@/lib/seo";
 import photo from "@/assets/ashley-hylton.png";
@@ -13,7 +14,8 @@ export const metadata = pageMetadata({
 
 export default function AboutPage() {
   return (
-    <section className="hero">
+    <section className="hero has-decor">
+      <Decor tone="rose" />
       <div className="wrap">
         <span className="eyebrow">About</span>
         <h1 className="name" style={{ fontSize: "clamp(48px, 8vw, 104px)" }}>
@@ -57,7 +59,7 @@ export default function AboutPage() {
               <dt>Looking for</dt>
               <dd>A permanent engineering role on a product team</dd>
               <dt>Working</dt>
-              <dd>Hybrid, Nottingham and around</dd>
+              <dd>Remote, or hybrid in the East Midlands</dd>
               <dt>Strongest in</dt>
               <dd>TypeScript, Next.js, React Native with Expo, Node.js, Stripe Connect, testing</dd>
               <dt>Commercial</dt>

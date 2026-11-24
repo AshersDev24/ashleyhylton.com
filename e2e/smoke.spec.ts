@@ -91,13 +91,9 @@ test("the theme choice survives a reload", async ({ page }) => {
   await expect(page.getByRole("button", { name: "Switch to dark theme" })).toBeVisible();
 });
 
-test("timeline filters and accordions work from the keyboard", async ({ page }) => {
+test("the timeline shows every step and the accordions work from the keyboard", async ({ page }) => {
   await page.goto("/");
-  const clientWork = page.getByRole("button", { name: "Client work" });
-  await clientWork.focus();
-  await page.keyboard.press("Enter");
-  await expect(clientWork).toHaveAttribute("aria-pressed", "true");
-  await expect(page.locator(".events li")).toHaveCount(1);
+  await expect(page.locator(".events li")).toHaveCount(6);
 
   const details = page.locator("details");
   await expect(details.first()).toHaveAttribute("open", "");
