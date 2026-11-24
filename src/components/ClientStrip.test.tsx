@@ -5,12 +5,12 @@ import { teaPoweredClients } from "@/content/site";
 import { ClientStrip } from "./ClientStrip";
 
 describe("ClientStrip", () => {
-  it("links each client once to its case study", () => {
+  it("links each client once to its live site", () => {
     render(<ClientStrip />);
-    const links = screen.getAllByRole("link", { name: /^.+ case study$/ });
+    const links = screen.getAllByRole("link", { name: /^.+ website$/ });
     expect(links).toHaveLength(teaPoweredClients.length);
     teaPoweredClients.forEach((client, i) => {
-      expect(links[i]).toHaveAccessibleName(`${client.name} case study`);
+      expect(links[i]).toHaveAccessibleName(`${client.name} website`);
       expect(links[i]).toHaveAttribute("href", client.url);
     });
   });

@@ -90,7 +90,7 @@ export default function TeaPoweredCaseStudy() {
           <h2>Clients I worked on</h2>
           <p>
             Twelve projects across eleven clients and an internal app. Each
-            name links to the agency&apos;s own case study.
+            name links to the client&apos;s live site.
           </p>
           <div className="mix" role="img" aria-label={mixLabel}>
             {teaPoweredMix.map((m) => (

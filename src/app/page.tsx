@@ -4,6 +4,7 @@ import { ContactLinks, EmailLine } from "@/components/ContactBlock";
 import { StatusPill } from "@/components/StatusPill";
 import { Timeline } from "@/components/Timeline";
 import { Chips } from "@/components/Chips";
+import { Decor } from "@/components/Decor";
 import { BublHubVisual, QuizWindow, TeaPoweredFan } from "@/components/ProjectVisuals";
 import {
   BagIcon,
@@ -28,7 +29,7 @@ import photo from "@/assets/ashley-hylton.png";
 
 export const metadata = pageMetadata({
   description:
-    "Full-stack TypeScript engineer in Nottingham, UK, open to permanent hybrid roles. Next.js, React Native and Node.js, with tests, staging and Sentry behind everything I ship.",
+    "Full-stack TypeScript engineer in Nottingham, UK, open to permanent remote roles, or hybrid in the East Midlands. Next.js, React Native and Node.js, with tests, staging and Sentry behind everything I ship.",
   path: "/",
 });
 
@@ -163,7 +164,7 @@ export default function HomePage() {
                 <dt>Based</dt>
                 <dd>Nottingham, UK</dd>
                 <dt>Looking for</dt>
-                <dd>Permanent roles on product teams, hybrid</dd>
+                <dd>Permanent roles on product teams. Remote, or hybrid in the East Midlands</dd>
                 <dt>Stack</dt>
                 <dd>TypeScript · Next.js · React Native (Expo) · Node.js</dd>
                 <dt>Links</dt>
@@ -190,7 +191,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section" aria-labelledby="numbers-h">
+      <section className="section has-decor" aria-labelledby="numbers-h">
+        <Decor tone="amber" />
         <div className="wrap" data-reveal>
           <span className="eyebrow">In numbers · November 2026</span>
           <h2 className="h2" id="numbers-h">
@@ -216,22 +218,23 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section" aria-labelledby="time-h">
+      <section className="section has-decor" aria-labelledby="time-h">
+        <Decor tone="violet" />
         <div className="wrap" data-reveal>
           <span className="eyebrow">Timeline</span>
           <h2 className="h2" id="time-h">
-            Self-taught, client work, and my own product
+            Coding the whole way through
           </h2>
           <p className="lede" style={{ marginTop: 18 }}>
-            Teaching myself to code through lots of small projects, commercial
-            work for clients at Tea Powered Projects, and building, launching
-            and rebuilding BublHub.
+            How I&apos;ve grown as a developer, with BublHub as the thread
+            running through it: built, launched, taken offline and rebuilt.
           </p>
           <Timeline />
         </div>
       </section>
 
-      <section className="section" aria-labelledby="work-h">
+      <section className="section has-decor" aria-labelledby="work-h">
+        <Decor tone="teal" />
         <div className="wrap" data-reveal>
           <span className="eyebrow">Selected work</span>
           <h2 className="h2" id="work-h">
@@ -304,7 +307,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section" aria-labelledby="how-h">
+      <section className="section has-decor" aria-labelledby="how-h">
+        <Decor tone="rose" />
         <div className="wrap" data-reveal>
           <span className="eyebrow">How I work</span>
           <h2 className="h2" id="how-h">
@@ -333,7 +337,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section" id="contact" aria-labelledby="contact-h">
+      <section className="section has-decor" id="contact" aria-labelledby="contact-h">
+        <Decor tone="sky" />
         <div className="wrap" data-reveal>
           <h2 className="eyebrow" id="contact-h">
             Contact

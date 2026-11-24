@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Chips } from "@/components/Chips";
+import { Decor } from "@/components/Decor";
 import { BublHubVisual, QuizWindow, TeaPoweredFan } from "@/components/ProjectVisuals";
 import { QUIZ_URL, TEA_POWERED_PERIOD } from "@/content/site";
 import { pageMetadata } from "@/lib/seo";
@@ -25,7 +26,8 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      <section style={{ paddingBottom: 120 }}>
+      <section className="has-decor" style={{ paddingBottom: 120, paddingTop: 40 }}>
+        <Decor tone="teal" />
         <div className="wrap">
           <div className="work-grid" data-reveal>
             <article className="card work-card work-wide lift">
