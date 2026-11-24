@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Chips } from "@/components/Chips";
+import { PhoneLineup } from "@/components/ProjectVisuals";
 import { GITHUB_URL } from "@/content/site";
 import { pageMetadata } from "@/lib/seo";
 
@@ -74,8 +75,14 @@ export default function BublHubCaseStudy() {
         relaunching it in 2027.
       </p>
 
+      <PhoneLineup />
+      <p className="lineup-caption">
+        Communities, events and chat in one app.{" "}
+        <a href="https://www.bublhub.com">See it on bublhub.com</a>
+      </p>
+
       <div className="cs-grid">
-        <article className="prose">
+        <article className="prose" data-reveal>
           <h2>Year by year</h2>
           <div className="years">
             {years.map((year) => (
@@ -146,7 +153,7 @@ export default function BublHubCaseStudy() {
           </nav>
         </article>
 
-        <aside className="card facts" aria-labelledby="facts-h">
+        <aside data-reveal="1" className="card facts" aria-labelledby="facts-h">
           <h2 id="facts-h">Key facts</h2>
           <dl>
             <dt>Role</dt>

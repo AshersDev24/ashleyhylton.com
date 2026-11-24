@@ -4,6 +4,7 @@ import { ContactLinks, EmailLine } from "@/components/ContactBlock";
 import { StatusPill } from "@/components/StatusPill";
 import { Timeline } from "@/components/Timeline";
 import { Chips } from "@/components/Chips";
+import { BublHubVisual, QuizWindow, TeaPoweredFan } from "@/components/ProjectVisuals";
 import {
   BagIcon,
   BrowserIcon,
@@ -190,7 +191,7 @@ export default function HomePage() {
       </section>
 
       <section className="section" aria-labelledby="numbers-h">
-        <div className="wrap">
+        <div className="wrap" data-reveal>
           <span className="eyebrow">In numbers · November 2026</span>
           <h2 className="h2" id="numbers-h">
             What sits behind the claims
@@ -216,7 +217,7 @@ export default function HomePage() {
       </section>
 
       <section className="section" aria-labelledby="time-h">
-        <div className="wrap">
+        <div className="wrap" data-reveal>
           <span className="eyebrow">Timeline</span>
           <h2 className="h2" id="time-h">
             Self-taught, client work, and my own product
@@ -231,13 +232,14 @@ export default function HomePage() {
       </section>
 
       <section className="section" aria-labelledby="work-h">
-        <div className="wrap">
+        <div className="wrap" data-reveal>
           <span className="eyebrow">Selected work</span>
           <h2 className="h2" id="work-h">
             Projects
           </h2>
           <div className="work">
             <article className="card feature lift">
+              <BublHubVisual />
               <div className="body">
                 <span className="tag">Featured · 2018 – present</span>
                 <h3>A ticketing platform, web to payouts, built by a team of one</h3>
@@ -257,10 +259,8 @@ export default function HomePage() {
             </article>
 
             <div className="rows">
-              <article className="card row lift">
-                <div className="tile" aria-hidden="true">
-                  TP
-                </div>
+              <article className="card row row-visual lift">
+                <TeaPoweredFan />
                 <div>
                   <span className="tag">Commercial · {TEA_POWERED_PERIOD}</span>
                   <h3 style={{ marginTop: 10 }}>Websites, shops and apps for 11 clients</h3>
@@ -282,10 +282,8 @@ export default function HomePage() {
                 </div>
               </article>
 
-              <article className="card row lift">
-                <div className="tile" aria-hidden="true">
-                  Q
-                </div>
+              <article className="card row row-visual lift">
+                <QuizWindow />
                 <div>
                   <span className="soon">Side project · for charity</span>
                   <h3>A live quiz-night app for a Nottingham charity</h3>
@@ -307,7 +305,7 @@ export default function HomePage() {
       </section>
 
       <section className="section" aria-labelledby="how-h">
-        <div className="wrap">
+        <div className="wrap" data-reveal>
           <span className="eyebrow">How I work</span>
           <h2 className="h2" id="how-h">
             Habits a team can rely on
@@ -336,7 +334,7 @@ export default function HomePage() {
       </section>
 
       <section className="section" id="contact" aria-labelledby="contact-h">
-        <div className="wrap">
+        <div className="wrap" data-reveal>
           <h2 className="eyebrow" id="contact-h">
             Contact
           </h2>
